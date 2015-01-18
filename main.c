@@ -34,12 +34,14 @@
 #include <util.h> 		/* client_process */
 #include <server.h>		/* server_accept and server_create */
 
-#include "thread_per_request.h"
+#include <thread_per_request.h>
+#include <thread_pool_request.h>
 
 #include <cas.h>
 
 #define MAX_DATA_SZ 1024
 #define MAX_CONCURRENCY 4
+#define BUFFER_LENGTH 256
 
 /* 
  * This is the function for handling a _single_ request.  Understand
@@ -95,6 +97,7 @@ server_thread_per_req(int accept_fd)
 void
 server_thread_pool_bounded(int accept_fd)
 {
+	process_request_thread_pool(BUFFER_LENGTH, accept_fd);
 	return;
 }
 

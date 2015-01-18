@@ -4,7 +4,6 @@
 #include <server.h> //server functions
 #include <util.h> //client functions
 #include <assert.h>
-#include <stdio.h>
 #include <linkedlist.h>
 
 void * thread_process(void * fd){
@@ -18,24 +17,18 @@ void process_threads_per_request(int concurrency, int accept_fd){
 
 	int fd = 0;
 
-	node_t * head = NULL;
-	node_t * tail = NULL;
+	list_t list;
+	init_list(&list);
 
 	//loop continuously
 	while(1){
 		//check to see if we can add any new threads
 		if(num_threads_running >= concurrency){
-			pthread_t * thread = (pthread_t *)(head->value);
+			pthread_t * thread = (pthread_t *)(peek_list(&list));
 			//wait until the last thread in the queue has finished
 			pthread_join(*thread, NULL);
-			//dequeue
-			pop_node(&head);
-			//free memory
-			free(thread);
-			//update tail
-			if(!head){
-				tail = NULL;
-			}
+			//pop it from the list
+			pop_list(&list);
 			num_threads_running--;
 		}
 		else{
@@ -43,16 +36,8 @@ void process_threads_per_request(int concurrency, int accept_fd){
 			fd = server_accept(accept_fd);
 			//spawn new thread to handle response
 			pthread_t * thread = (pthread_t *)malloc(sizeof(pthread_t));
-			//check head
-			node_t * new_node = create_node(thread);
-			if(!head){
-				head = new_node;
-				tail = new_node;
-			}
-			else{
-				tail->next = new_node;
-				tail = new_node;
-			}
+			//push list
+			push_list(&list, thread);
 			pthread_create(thread, NULL, &thread_process, (void *)&fd);
 			num_threads_running++;
 		}

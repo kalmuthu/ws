@@ -2,7 +2,7 @@
 #import <linkedlist.h>
 #import <stdlib.h>
 #import <assert.h>
-
+#import <stdio.h>
 
 node_t * create_node(void * value){
 	//ensure value is not null
@@ -38,24 +38,67 @@ void * pop_node(node_t ** head){
 }
 
 node_t * remove_node(node_t ** head, void * value){
-	//ensure head is not null
+	//look for the value in the list
 	assert(head);
 	assert(*head);
+	assert(value);
+
+	printf("Target: %d\n", (unsigned int)value);
+
 	node_t * curr_node = *head;
-	//handle head case
-	if(curr_node->value == value){
-		*head = curr_node->next;
-		return curr_node;
-	}
+	node_t * prev = NULL;
 	while(curr_node){
-		if(curr_node->next && curr_node->next->value == value){
-			node_t * target = curr_node->next;
-			//fix pointer
-			curr_node->next = target->next;
-			return target;
+		printf("Current Value: %d\n", (unsigned int)curr_node->value);
+		if(curr_node->value == value){
+			//remove curr node
+			if(prev){
+				prev->next = curr_node->next;
+			}
+			else{
+				*head = curr_node->next;
+			}
+			return curr_node;
 		}
 		curr_node = curr_node->next;
 	}
-	//we didn't
 	return NULL;
+}
+
+void init_list(list_t * list){
+	list->head = NULL;
+	list->tail = NULL;
+}
+
+void * peek_list(list_t * list){
+	assert(list);
+	assert(list->head);
+	return list->head->value;
+}
+
+void pop_list(list_t * list){
+	if(list->head){
+		void * value = pop_node(&(list->head));
+		free(value);
+	}
+}
+
+void push_list(list_t * list, void * value){
+	node_t * node = (node_t *)malloc(sizeof(node_t));
+	node->value = value;
+	//check for default case
+	if(list->tail){
+		list->tail->next = node;
+		list->tail = node;
+	}
+	else{
+		list->head = node;
+		list->tail = node;
+	}
+}
+
+void remove_list(list_t * list, void * value){
+	node_t * node = remove_node(&(list->head), value);
+	if(node){
+		free(node);
+	}
 }
