@@ -4,6 +4,8 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+
+
 pool_t * init_pool(int max_size){
 	pool_t * pool = (pool_t *)malloc(sizeof(pool_t));
 	pool->list = (list_t *)malloc(sizeof(list_t));
@@ -13,6 +15,9 @@ pool_t * init_pool(int max_size){
 	pthread_mutex_init(pool->count_mutex, NULL);
 	pool->count_cv = (pthread_cond_t *)malloc(sizeof(pthread_cond_t));
 	pthread_cond_init(pool->count_cv, NULL);
+    pool->attr = (pthread_attr_t *)malloc(sizeof(pthread_attr_t));
+    pthread_attr_init(pool->attr);
+    pthread_attr_setdetachstate(pool->attr, PTHREAD_CREATE_DETACHED);
 	return pool;
 }
 
@@ -22,6 +27,7 @@ void free_pool(pool_t * pool){
 	pthread_cond_destroy(pool->count_cv);
 	free(pool->count_cv);
 	free(pool->list);
+    free(pool->attr);
 	free(pool);
 }
 
@@ -44,11 +50,11 @@ void add_to_pool(pool_t * pool, void * (*server_routine) (void *), void * (*star
 
 	//enqueue thread
 	pool->current_size += 1;
-	pthread_t * thread = (pthread_t *)malloc(sizeof(pthread_t));
+    pthread_t thread;
 	pool_args->pool = pool;
-	pool_args->curr_thread = thread;
-	pthread_create(thread, NULL, start_routine, (void*)pool_args);
-	push_list(pool->list, thread);
+    pool_args->curr_thread = &thread;
+    pthread_create(&thread, pool->attr, start_routine, (void*)pool_args);
+    push_list(pool->list, &thread);
 
 	//signal
 	pthread_cond_signal(pool->count_cv);

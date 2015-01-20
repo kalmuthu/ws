@@ -9,6 +9,7 @@ struct pool{
 	list_t * list;
 	int current_size;
 	int max_size;
+    pthread_attr_t * attr;
 	pthread_mutex_t * count_mutex;
 	pthread_cond_t * count_cv;
 };

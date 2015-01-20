@@ -21,7 +21,9 @@ void process_threads_per_request(int concurrency, int accept_fd){
 	init_list(&list);
 
 	//loop continuously
-	while(1){
+    //while(1){
+    int i = 0;
+    while(i < 1000){
 		//check to see if we can add any new threads
 		if(num_threads_running >= concurrency){
 			pthread_t * thread = (pthread_t *)(peek_list(&list));
@@ -30,6 +32,7 @@ void process_threads_per_request(int concurrency, int accept_fd){
 			//pop it from the list
 			pop_list(&list);
 			num_threads_running--;
+            ++i;
 		}
 		else{
 			//accept the new connection
