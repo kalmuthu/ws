@@ -22,13 +22,17 @@ pool_t * init_pool(int max_size){
 }
 
 void free_pool(pool_t * pool){
-	pthread_mutex_destroy(pool->count_mutex);
-	free(pool->count_mutex);
-	pthread_cond_destroy(pool->count_cv);
-	free(pool->count_cv);
+    pthread_mutex_destroy(pool->count_mutex);
+    free(pool->count_mutex);
+    pthread_cond_destroy(pool->count_cv);
+    free(pool->count_cv);
+    //clear list
+    while(pool->list->head){
+        pop_list(pool->list);
+    }
 	free(pool->list);
     free(pool->attr);
-	free(pool);
+    free(pool);
 }
 
 void add_to_pool(pool_t * pool, void * (*server_routine) (void *), void * (*start_routine) (void*), void * args){
@@ -41,20 +45,18 @@ void add_to_pool(pool_t * pool, void * (*server_routine) (void *), void * (*star
 		pthread_cond_wait(pool->count_cv, pool->count_mutex);
 	}
 
-	printf("Starting server process\n");
 	void * return_value = (*server_routine)(args);
 
 	pool_arg_t * pool_args = (pool_arg_t *)malloc(sizeof(pool_arg_t));
 	pool_args->args = return_value;
-	printf("Received value: %d\n", (int)return_value);
 
 	//enqueue thread
 	pool->current_size += 1;
     pthread_t thread;
 	pool_args->pool = pool;
-    pool_args->curr_thread = &thread;
     pthread_create(&thread, pool->attr, start_routine, (void*)pool_args);
-    push_list(pool->list, &thread);
+        pool_args->curr_thread = thread;
+    push_list(pool->list, thread);
 
 	//signal
 	pthread_cond_signal(pool->count_cv);
@@ -63,14 +65,12 @@ void add_to_pool(pool_t * pool, void * (*server_routine) (void *), void * (*star
 	pthread_mutex_unlock(pool->count_mutex);
 }
 
-void remove_from_pool(pool_t * pool, pthread_t * thread){
+void remove_from_pool(pool_t * pool, pthread_t thread){
 	//acquire the lock on the size
 	pthread_mutex_lock(pool->count_mutex);
 
-	printf("Received lock to remove thread\n");
-
 	//check to see if we can dequeue
-	while(pool->current_size <= 0){
+    while(pool->current_size <= 0){
 		//wait
 		pthread_cond_wait(pool->count_cv, pool->count_mutex);
 	}
@@ -80,7 +80,7 @@ void remove_from_pool(pool_t * pool, pthread_t * thread){
 	remove_list(pool->list, thread);
 
 	//signal
-	pthread_cond_signal(pool->count_cv);
+    pthread_cond_signal(pool->count_cv);
 
 	//release lock on size
 	pthread_mutex_unlock(pool->count_mutex);

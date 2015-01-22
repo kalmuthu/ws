@@ -43,12 +43,9 @@ node_t * remove_node(node_t ** head, void * value){
 	assert(*head);
 	assert(value);
 
-	printf("Target: %d\n", (unsigned int)value);
-
 	node_t * curr_node = *head;
 	node_t * prev = NULL;
 	while(curr_node){
-		printf("Current Value: %d\n", (unsigned int)curr_node->value);
 		if(curr_node->value == value){
 			//remove curr node
 			if(prev){
@@ -75,11 +72,11 @@ void * peek_list(list_t * list){
 	return list->head->value;
 }
 
-void pop_list(list_t * list){
+void * pop_list(list_t * list){
 	if(list->head){
-		void * value = pop_node(&(list->head));
-		free(value);
-	}
+        return pop_node(&(list->head));
+    }
+    return NULL;
 }
 
 void push_list(list_t * list, void * value){
