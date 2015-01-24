@@ -80,8 +80,7 @@ server_single_request(int accept_fd)
 void
 server_thread_per_req(int accept_fd)
 {
-    int concurrency = 4;
-    process_threads_per_request(concurrency, accept_fd);
+    process_threads_per_request(MAX_CONCURRENCY, accept_fd);
 	return;
 }
 
