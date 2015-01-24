@@ -37,7 +37,7 @@ newfd_create_req(int new_fd)
 	char *data;
 	int amnt;
 
-	data = malloc(MAX_REQ_SZ * sizeof(char));
+	data = calloc(MAX_REQ_SZ, sizeof(char));
 	if (!data) return NULL;
 
 	amnt = read(new_fd, data, MAX_REQ_SZ);

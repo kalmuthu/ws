@@ -51,7 +51,7 @@ void process_threads_per_request(int concurrency, int accept_fd){
 
     //empty list
     while(list.head){
-        pthread_t * thread = (pthread_t)(peek_list(&list));
+        pthread_t * thread = (pthread_t *)(peek_list(&list));
         pthread_join(*thread, NULL);
         pop_list(&list);
 	free(thread);

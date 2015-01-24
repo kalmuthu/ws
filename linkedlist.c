@@ -80,7 +80,7 @@ void * pop_list(list_t * list){
 
 void push_list(list_t * list, void * value){
 	node_t * node = (node_t *)malloc(sizeof(node_t));
-	node->value = value;
+	*node = (node_t){NULL, value};
 	//check for default case
 	if(list->tail){
 		list->tail->next = node;
