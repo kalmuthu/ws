@@ -23,6 +23,12 @@ pool_t * init_pool(int max_size){
 }
 
 void free_pool(pool_t * pool){
+    pthread_mutex_lock(pool->count_mutex);
+    while(pool->current_size > 0){
+        pthread_cond_wait(pool->count_cv, pool->count_mutex);
+    }
+    pthread_mutex_unlock(pool->count_mutex);
+
     pthread_mutex_destroy(pool->count_mutex);
     free(pool->count_mutex);
     pthread_cond_destroy(pool->count_cv);
