@@ -52,9 +52,9 @@ void add_to_pool(pool_t * pool, void * (*server_routine) (void *), void * (*star
 
 	//enqueue thread
 	pool->current_size += 1;
-    pthread_t thread;
+    pthread_t * thread = (pthread_t *)malloc(sizeof(pthread_t));
 	pool_args->pool = pool;
-    pthread_create(&thread, pool->attr, start_routine, (void*)pool_args);
+    pthread_create(thread, pool->attr, start_routine, (void*)pool_args);
         pool_args->curr_thread = thread;
     push_list(pool->list, thread);
 
@@ -65,7 +65,7 @@ void add_to_pool(pool_t * pool, void * (*server_routine) (void *), void * (*star
 	pthread_mutex_unlock(pool->count_mutex);
 }
 
-void remove_from_pool(pool_t * pool, pthread_t thread){
+void remove_from_pool(pool_t * pool, pthread_t * thread){
 	//acquire the lock on the size
 	pthread_mutex_lock(pool->count_mutex);
 
@@ -78,6 +78,7 @@ void remove_from_pool(pool_t * pool, pthread_t thread){
 	//remove thread
 	pool->current_size -= 1;
     remove_list(pool->list, thread);
+	free(thread);
 
 	//signal
     pthread_cond_signal(pool->count_cv);

@@ -1,5 +1,5 @@
 OBJS=server.o simple_http.o content.o main.o util.o thread_per_request.o linkedlist.o threadpool.o thread_pool_request.o
-CFLAGS=-g -I. -Wall -Wextra -lpthread
+CFLAGS=-g -I. -Wall -Wextra -pthread
 #DEFINES=-DTHINK_TIME
 BIN=server
 CC=gcc
@@ -20,20 +20,24 @@ test0:
 
 test1:
 	./server 8080 1 &
+	sleep 5
 	httperf --port=8080 --server=localhost --num-conns=1000 --burst-len=100
 	killall server
 
 test2:
 	./server 8080 2 &
+	sleep 5
 	httperf --port=8080 --server=localhost --num-conns=1000 --burst-len=100
 	killall server
 
 valgrind1:
 	valgrind --leak-check=full --dsymutil=yes --track-origins=yes ./server 8080 1 &
-	sleep 2 && httperf --port=8080 --server=localhost --num-conns=1000 --burst-len=100
+	sleep 5
+	httperf --port=8080 --server=localhost --num-conns=1000 --burst-len=100
 #	killall server
 
 valgrind2:
 	valgrind --leak-check=yes --dsymutil=no ./server 8080 2 &
+	sleep 5
 	httperf --port=8080 --server=localhost --num-conns=1000 --burst-len=100
 #	killall server
