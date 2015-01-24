@@ -113,7 +113,7 @@ main(int argc, char *argv[])
 {
 	server_type_t server_type;
 	short int port;
-	int accept_fd;
+    int accept_fd;
 
 	if (argc != 3) {
 		printf("Proper usage of http server is:\n%s <port> <#>\n"

@@ -18,8 +18,8 @@ void * thread_process(void * fd){
 void process_threads_per_request(int concurrency, int accept_fd){
 	int num_threads_running = 0;
 
-	list_t list;
-	init_list(&list);
+    list_t list;
+    init_list(&list);
 
 	//loop continuously
     //while(1){
