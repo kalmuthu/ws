@@ -3,9 +3,14 @@
 #include <linkedlist.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include <assert.h>
 
 
-
+/**
+ * @brief init_pool Allocates and intializes the thread pool
+ * @param max_size The max size of the pool
+ * @return An initialized thread pool
+ */
 pool_t * init_pool(int max_size){
 	pool_t * pool = (pool_t *)malloc(sizeof(pool_t));
 	pool->list = (list_t *)malloc(sizeof(list_t));
@@ -22,6 +27,10 @@ pool_t * init_pool(int max_size){
 	return pool;
 }
 
+/**
+ * @brief free_pool Frees the pool and its resources
+ * @param pool The thread pool to be freed
+ */
 void free_pool(pool_t * pool){
     pthread_mutex_lock(pool->count_mutex);
     while(pool->current_size > 0){
@@ -43,6 +52,11 @@ void free_pool(pool_t * pool){
     free(pool);
 }
 
+/**
+ * @brief add_to_pool Adds a connection to be processed in the pool
+ * @param pool The thread pool
+ * @param args The args for the server routine
+ */
 void add_to_pool(pool_t * pool, void * (*server_routine) (void *), void * (*start_routine) (void*), void * args){
 	//acquire the lock on the size
 	pthread_mutex_lock(pool->count_mutex);
@@ -73,6 +87,11 @@ void add_to_pool(pool_t * pool, void * (*server_routine) (void *), void * (*star
 	pthread_mutex_unlock(pool->count_mutex);
 }
 
+/**
+ * @brief remove_from_pool Removes a task from the pool
+ * @param pool The pool
+ * @param thread The task as represented by the thread id
+ */
 void remove_from_pool(pool_t * pool, pthread_t * thread){
 	//acquire the lock on the size
 	pthread_mutex_lock(pool->count_mutex);
