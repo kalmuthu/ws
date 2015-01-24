@@ -77,7 +77,7 @@ void remove_from_pool(pool_t * pool, pthread_t thread){
 
 	//remove thread
 	pool->current_size -= 1;
-	remove_list(pool->list, thread);
+    remove_list(pool->list, (void*)thread);
 
 	//signal
     pthread_cond_signal(pool->count_cv);
