@@ -55,6 +55,7 @@ node_t * remove_node(node_t ** head, void * value){
 			}
 			return curr_node;
 		}
+        prev = curr_node;
 		curr_node = curr_node->next;
 	}
 	return NULL;
@@ -80,7 +81,7 @@ void * pop_list(list_t * list){
 
 void push_list(list_t * list, void * value){
 	node_t * node = (node_t *)malloc(sizeof(node_t));
-	*node = (node_t){NULL, value};
+    *node = (node_t){NULL, value};
 	//check for default case
 	if(list->tail){
 		list->tail->next = node;
