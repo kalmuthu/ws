@@ -30,6 +30,7 @@ test2:
 
 valgrind1:
 	valgrind --leak-check=full --dsymutil=yes --track-origins=yes ./server 8080 1 &
+	sleep 20
 	httperf --port=8080 --server=localhost --num-conns=1000 --burst-len=100
 #	killall server
 

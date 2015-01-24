@@ -41,7 +41,6 @@ node_t * remove_node(node_t ** head, void * value){
 	//look for the value in the list
 	assert(head);
 	assert(*head);
-	assert(value);
 
 	node_t * curr_node = *head;
 	node_t * prev = NULL;
