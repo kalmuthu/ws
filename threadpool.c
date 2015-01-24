@@ -18,6 +18,7 @@ pool_t * init_pool(int max_size){
     pool->attr = (pthread_attr_t *)malloc(sizeof(pthread_attr_t));
     pthread_attr_init(pool->attr);
     pthread_attr_setdetachstate(pool->attr, PTHREAD_CREATE_DETACHED);
+	pool->current_size = 0;
 	return pool;
 }
 
@@ -28,7 +29,8 @@ void free_pool(pool_t * pool){
     free(pool->count_cv);
     //clear list
     while(pool->list->head){
-        pop_list(pool->list);
+        pthread_t * thread = pop_list(pool->list);
+	free(thread);
     }
 	free(pool->list);
     free(pool->attr);
