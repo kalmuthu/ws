@@ -40,7 +40,7 @@ server_create(short int port)
 		perror("binding receive socket");
 		return -1;
 	}
-	listen(fd, 10);
+    listen(fd, 10);
 
 	return fd;
 }

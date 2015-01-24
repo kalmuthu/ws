@@ -63,7 +63,7 @@ node_t * remove_node(node_t ** head, void * value){
 
 void init_list(list_t * list){
 	list->head = NULL;
-	list->tail = NULL;
+    list->tail = NULL;
 }
 
 void * peek_list(list_t * list){
@@ -73,7 +73,7 @@ void * peek_list(list_t * list){
 }
 
 void * pop_list(list_t * list){
-	if(list->head){
+    if(list->head){
         return pop_node(&(list->head));
     }
     return NULL;

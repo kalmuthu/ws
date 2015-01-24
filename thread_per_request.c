@@ -6,6 +6,7 @@
 #include <assert.h>
 #include <linkedlist.h>
 #include <unistd.h>
+#include <stdio.h>
 
 void * thread_process(void * fd){
     int * fd_int = (int *)fd;
@@ -21,10 +22,10 @@ void process_threads_per_request(int concurrency, int accept_fd){
 	init_list(&list);
 
 	//loop continuously
-    while(1){
-    //int i = 0;
-    //while(i < 1000){
-		//check to see if we can add any new threads
+    //while(1){
+    int i = 0;
+    while(i < 1000){
+        //check to see if we can add any new threads
 		if(num_threads_running >= concurrency){
             pthread_t thread = (pthread_t)(peek_list(&list));
 			//wait until the last thread in the queue has finished
@@ -37,14 +38,13 @@ void process_threads_per_request(int concurrency, int accept_fd){
 			//accept the new connection
             int * fd_ptr = (int *)malloc(sizeof(int));
             *fd_ptr = server_accept(accept_fd);
-            assert(*fd_ptr);
 			//spawn new thread to handle response
             pthread_t thread;
             pthread_create(&thread, NULL, &thread_process, (void *)fd_ptr);
             //push list
             push_list(&list, thread);
 			num_threads_running++;
-            //++i;
+            ++i;
 		}
 	}
 
