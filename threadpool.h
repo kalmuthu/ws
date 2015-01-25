@@ -27,31 +27,12 @@ struct pool_arg{
     pthread_t * curr_thread;
 };
 
-/**
- * @brief init_pool Initializes the pool
- * @param max_size The max size of the pool
- * @return An initialized pool
- */
 pool_t * init_pool(int max_size);
 
-/**
- * @brief free_pool Frees the pool and its resources
- * @param pool The pool
- */
 void free_pool(pool_t * pool);
 
-/**
- * @brief add_to_pool Adds another connection to the pool
- * @param pool The pool
- * @param args Args for the server routine
- */
 void add_to_pool(pool_t * pool, void * (*server_routine) (void *), void * (*start_routine) (void*), void * args);
 
-/**
- * @brief remove_from_pool Removes a connection from the pool
- * @param pool The pool
- * @param thread The thread as represented by thread id
- */
 void remove_from_pool(pool_t * pool, pthread_t * thread);
 
 #endif

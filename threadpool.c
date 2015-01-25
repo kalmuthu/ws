@@ -55,6 +55,8 @@ void free_pool(pool_t * pool){
 /**
  * @brief add_to_pool Adds a connection to be processed in the pool
  * @param pool The thread pool
+ * @param server_routine The function pointer to the server routine
+ * @param start_routine The function pointer to the thread routine
  * @param args The args for the server routine
  */
 void add_to_pool(pool_t * pool, void * (*server_routine) (void *), void * (*start_routine) (void*), void * args){

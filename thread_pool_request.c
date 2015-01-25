@@ -4,7 +4,6 @@
 #include <util.h> //client functions
 #include <stdio.h>
 #include <assert.h>
-#include <unistd.h>
 
 /**
  * @brief thread_process_in_pool Thread function; services the client request
@@ -47,12 +46,12 @@ void process_request_thread_pool(int max_size, int accept_fd){
 	pool_t * pool = init_pool(max_size);
 
 	//loop
-    //while(1){
-    int i = 0;
-    while(i < 1000){
+    while(1){
+    //int i = 0;
+    //while(i < 1000){
 		add_to_pool(pool, (void *)server_process, thread_process_in_pool, &accept_fd);
-        i++;
+        //i++;
     }
-	sleep(5);
+
 	free_pool(pool);
 }

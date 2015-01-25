@@ -24,10 +24,10 @@ void * thread_process(void * fd){
 
 /**
  * @brief process_threads_per_request Processes the request using a thread per request
- * @param concurrency The maximum number of concurrent threads
+ * @param max_concurrency The maximum number of concurrent threads
  * @param accept_fd The accepted file descriptor
  */
-void process_threads_per_request(int concurrency, int accept_fd){
+void process_threads_per_request(int max_concurrency, int accept_fd){
 	int num_threads_running = 0;
 
     //the list
@@ -35,11 +35,11 @@ void process_threads_per_request(int concurrency, int accept_fd){
     init_list(&list);
 
 	//loop continuously
-    //while(1){
-    int i = 0;
-    while(i < 1000){
+    while(1){
+    //int i = 0;
+    //while(i < 1000){
         //check to see if we can add any new threads
-		if(num_threads_running >= concurrency){
+        if(num_threads_running >= max_concurrency){
             pthread_t * thread = (pthread_t *)(peek_list(&list));
             assert(thread);
 			//wait until the last thread in the queue has finished
@@ -62,7 +62,7 @@ void process_threads_per_request(int concurrency, int accept_fd){
             //push list
             push_list(&list, thread);
 			num_threads_running++;
-            ++i;
+            //++i;
 		}
 	}
 
