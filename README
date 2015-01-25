@@ -1,0 +1,44 @@
+README
+
+Michael Trotter
+Advanced OS
+
+Webserver implementation
+
+Notes:
+The sample output was performed with the counters (which are commented out) rather than the infinite loops shown here.
+
+The linked list design comes from previous work (mainly from interviews I've studied up from and data structures from undergrad). Likewise, the threadpool design was an original creation although it drew from some of my experience as a web developer with JavaScript and callback functions (function pointers are close enough).
+
+With the thread pool and the linked list, I tried to be as generic as possible hence the void pointers for the value of the linked list (which really could have been thread_t pointers). Similarly, this is why the server has a function pointer for the server tasks. Since the tasks themselves for the thread pool portion require more information than just the args (indeed, they need their actual function and the thread id to destroy once done), I created a special struct to encapsulate the necessary functionality.
+
+Tested with GCC on OSX and Ubuntu Linux:
+
+vagrant@precise32:~$ gcc -v 
+Using built-in specs.
+COLLECT_GCC=gcc
+COLLECT_LTO_WRAPPER=/usr/lib/gcc/i686-linux-gnu/4.6/lto-wrapper
+Target: i686-linux-gnu
+Configured with: ../src/configure -v --with-pkgversion='Ubuntu/Linaro 4.6.3-1ubuntu5' --with-bugurl=file:///usr/share/doc/gcc-4.6/README.Bugs --enable-languages=c,c++,fortran,objc,obj-c++ --prefix=/usr --program-suffix=-4.6 --enable-shared --enable-linker-build-id --with-system-zlib --libexecdir=/usr/lib --without-included-gettext --enable-threads=posix --with-gxx-include-dir=/usr/include/c++/4.6 --libdir=/usr/lib --enable-nls --with-sysroot=/ --enable-clocale=gnu --enable-libstdcxx-debug --enable-libstdcxx-time=yes --enable-gnu-unique-object --enable-plugin --enable-objc-gc --enable-targets=all --disable-werror --with-arch-32=i686 --with-tune=generic --enable-checking=release --build=i686-linux-gnu --host=i686-linux-gnu --target=i686-linux-gnu
+Thread model: posix
+gcc version 4.6.3 (Ubuntu/Linaro 4.6.3-1ubuntu5) 
+
+mtrotter$ gcc -v
+Configured with: --prefix=/Applications/Xcode.app/Contents/Developer/usr --with-gxx-include-dir=/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk/usr/include/c++/4.2.1
+Apple LLVM version 6.0 (clang-600.0.56) (based on LLVM 3.5svn)
+Target: x86_64-apple-darwin14.0.0
+Thread model: posix
+
+Acknowledgements:
+
+Doxygen (it's been awhile but I really just let Qt autocomplete): http://www.stack.nl/~dimitri/doxygen/manual/docblocks.html
+pthread_attr_t: http://man7.org/linux/man-pages/man3/pthread_attr_init.3.html
+pthread_create: http://man7.org/linux/man-pages/man3/pthread_create.3.html
+pthread_join: http://man7.org/linux/man-pages/man3/pthread_join.3.html
+pthread (in general including what pthread_t really is): http://man7.org/linux/man-pages/man7/pthreads.7.html
+sleep: http://linux.die.net/man/3/sleep
+pthread mutex: http://linux.die.net/man/3/pthread_mutex_init
+pthread cond wait: http://linux.die.net/man/3/pthread_cond_wait
+pthread cond signal: http://linux.die.net/man/3/pthread_cond_signal
+pthread cond init: http://linux.die.net/man/3/pthread_cond_init
+

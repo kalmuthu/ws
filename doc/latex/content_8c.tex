@@ -1,0 +1,59 @@
+\hypertarget{content_8c}{}\section{content.\+c File Reference}
+\label{content_8c}\index{content.\+c@{content.\+c}}
+{\ttfamily \#include $<$unistd.\+h$>$}\\*
+{\ttfamily \#include $<$string.\+h$>$}\\*
+{\ttfamily \#include $<$stdlib.\+h$>$}\\*
+{\ttfamily \#include $<$stdio.\+h$>$}\\*
+{\ttfamily \#include $<$sys/types.\+h$>$}\\*
+{\ttfamily \#include $<$sys/stat.\+h$>$}\\*
+{\ttfamily \#include $<$fcntl.\+h$>$}\\*
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{content_8c_ab5f7b30c31c8ecb42689e605a09b521c}{M\+A\+X\+\_\+\+C\+O\+N\+T\+E\+N\+T\+\_\+\+S\+Z}~(1024$\ast$1024$\ast$10)
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+char $\ast$ \hyperlink{content_8c_a25ee639bdb4d3c280eb4f1457181c4c3}{error\+\_\+resp} (char $\ast$path, int $\ast$len)
+\item 
+int \hyperlink{content_8c_a71d6ae44c0ee16a08d55ab9612ede7f3}{sanity\+\_\+check} (char $\ast$path)
+\item 
+char $\ast$ \hyperlink{content_8c_a5c191bcaea711bba9342e6b6b31c7e0a}{content\+\_\+get} (char $\ast$path, int $\ast$content\+\_\+len)
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\hypertarget{content_8c_ab5f7b30c31c8ecb42689e605a09b521c}{}\index{content.\+c@{content.\+c}!M\+A\+X\+\_\+\+C\+O\+N\+T\+E\+N\+T\+\_\+\+S\+Z@{M\+A\+X\+\_\+\+C\+O\+N\+T\+E\+N\+T\+\_\+\+S\+Z}}
+\index{M\+A\+X\+\_\+\+C\+O\+N\+T\+E\+N\+T\+\_\+\+S\+Z@{M\+A\+X\+\_\+\+C\+O\+N\+T\+E\+N\+T\+\_\+\+S\+Z}!content.\+c@{content.\+c}}
+\subsubsection[{M\+A\+X\+\_\+\+C\+O\+N\+T\+E\+N\+T\+\_\+\+S\+Z}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\+A\+X\+\_\+\+C\+O\+N\+T\+E\+N\+T\+\_\+\+S\+Z~(1024$\ast$1024$\ast$10)}\label{content_8c_ab5f7b30c31c8ecb42689e605a09b521c}
+Redistribution of this file is permitted under the G\+N\+U General Public License v2.
+
+Copyright 2012 by Gabriel Parmer. Author\+: Gabriel Parmer, \href{mailto:gparmer@gwu.edu}{\tt gparmer@gwu.\+edu}, 2012 
+
+\subsection{Function Documentation}
+\hypertarget{content_8c_a5c191bcaea711bba9342e6b6b31c7e0a}{}\index{content.\+c@{content.\+c}!content\+\_\+get@{content\+\_\+get}}
+\index{content\+\_\+get@{content\+\_\+get}!content.\+c@{content.\+c}}
+\subsubsection[{content\+\_\+get}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ content\+\_\+get (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{path, }
+\item[{int $\ast$}]{content\+\_\+len}
+\end{DoxyParamCaption}
+)}\label{content_8c_a5c191bcaea711bba9342e6b6b31c7e0a}
+Redistribution of this file is permitted under the G\+N\+U General Public License v2.
+
+Copyright 2012 by Gabriel Parmer. Author\+: Gabriel Parmer, \href{mailto:gparmer@gwu.edu}{\tt gparmer@gwu.\+edu}, 2012 \hypertarget{content_8c_a25ee639bdb4d3c280eb4f1457181c4c3}{}\index{content.\+c@{content.\+c}!error\+\_\+resp@{error\+\_\+resp}}
+\index{error\+\_\+resp@{error\+\_\+resp}!content.\+c@{content.\+c}}
+\subsubsection[{error\+\_\+resp}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ error\+\_\+resp (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{path, }
+\item[{int $\ast$}]{len}
+\end{DoxyParamCaption}
+)}\label{content_8c_a25ee639bdb4d3c280eb4f1457181c4c3}
+\hypertarget{content_8c_a71d6ae44c0ee16a08d55ab9612ede7f3}{}\index{content.\+c@{content.\+c}!sanity\+\_\+check@{sanity\+\_\+check}}
+\index{sanity\+\_\+check@{sanity\+\_\+check}!content.\+c@{content.\+c}}
+\subsubsection[{sanity\+\_\+check}]{\setlength{\rightskip}{0pt plus 5cm}int sanity\+\_\+check (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{path}
+\end{DoxyParamCaption}
+)}\label{content_8c_a71d6ae44c0ee16a08d55ab9612ede7f3}

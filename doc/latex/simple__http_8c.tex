@@ -1,0 +1,66 @@
+\hypertarget{simple__http_8c}{}\section{simple\+\_\+http.\+c File Reference}
+\label{simple__http_8c}\index{simple\+\_\+http.\+c@{simple\+\_\+http.\+c}}
+{\ttfamily \#include $<$string.\+h$>$}\\*
+{\ttfamily \#include $<$assert.\+h$>$}\\*
+{\ttfamily \#include $<$stdlib.\+h$>$}\\*
+{\ttfamily \#include $<$unistd.\+h$>$}\\*
+{\ttfamily \#include $<$stdio.\+h$>$}\\*
+{\ttfamily \#include $<$simple\+\_\+http.\+h$>$}\\*
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{simple__http_8c_a001791a21d538b8b9176287ae60d9b61}{M\+A\+X\+\_\+\+D\+I\+G\+I\+T\+S}~128
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structhttp__req}{http\+\_\+req} $\ast$ \hyperlink{simple__http_8c_a81a28a545701dd4d850b705d02ff601a}{shttp\+\_\+alloc\+\_\+req} (int fd, char $\ast$request)
+\item 
+void \hyperlink{simple__http_8c_a5b414a998ecd5ffa4cd8c733977c49cd}{shttp\+\_\+free\+\_\+req} (struct \hyperlink{structhttp__req}{http\+\_\+req} $\ast$r)
+\item 
+int \hyperlink{simple__http_8c_a1e749920e6117fa23f7bab8a3ccabbed}{shttp\+\_\+get\+\_\+path} (struct \hyperlink{structhttp__req}{http\+\_\+req} $\ast$r)
+\item 
+int \hyperlink{simple__http_8c_a21420db9afc47d9a1ef290b03bd4dd82}{shttp\+\_\+alloc\+\_\+response\+\_\+head} (struct \hyperlink{structhttp__req}{http\+\_\+req} $\ast$r, char $\ast$data, int dlen)
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\hypertarget{simple__http_8c_a001791a21d538b8b9176287ae60d9b61}{}\index{simple\+\_\+http.\+c@{simple\+\_\+http.\+c}!M\+A\+X\+\_\+\+D\+I\+G\+I\+T\+S@{M\+A\+X\+\_\+\+D\+I\+G\+I\+T\+S}}
+\index{M\+A\+X\+\_\+\+D\+I\+G\+I\+T\+S@{M\+A\+X\+\_\+\+D\+I\+G\+I\+T\+S}!simple\+\_\+http.\+c@{simple\+\_\+http.\+c}}
+\subsubsection[{M\+A\+X\+\_\+\+D\+I\+G\+I\+T\+S}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\+A\+X\+\_\+\+D\+I\+G\+I\+T\+S~128}\label{simple__http_8c_a001791a21d538b8b9176287ae60d9b61}
+
+
+\subsection{Function Documentation}
+\hypertarget{simple__http_8c_a81a28a545701dd4d850b705d02ff601a}{}\index{simple\+\_\+http.\+c@{simple\+\_\+http.\+c}!shttp\+\_\+alloc\+\_\+req@{shttp\+\_\+alloc\+\_\+req}}
+\index{shttp\+\_\+alloc\+\_\+req@{shttp\+\_\+alloc\+\_\+req}!simple\+\_\+http.\+c@{simple\+\_\+http.\+c}}
+\subsubsection[{shttp\+\_\+alloc\+\_\+req}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf http\+\_\+req}$\ast$ shttp\+\_\+alloc\+\_\+req (
+\begin{DoxyParamCaption}
+\item[{int}]{fd, }
+\item[{char $\ast$}]{request}
+\end{DoxyParamCaption}
+)}\label{simple__http_8c_a81a28a545701dd4d850b705d02ff601a}
+Redistribution of this file is permitted under the G\+N\+U General Public License v2.
+
+Copyright 2012 by Gabriel Parmer. Author\+: Gabriel Parmer, \href{mailto:gparmer@gwu.edu}{\tt gparmer@gwu.\+edu}, 2012 \hypertarget{simple__http_8c_a21420db9afc47d9a1ef290b03bd4dd82}{}\index{simple\+\_\+http.\+c@{simple\+\_\+http.\+c}!shttp\+\_\+alloc\+\_\+response\+\_\+head@{shttp\+\_\+alloc\+\_\+response\+\_\+head}}
+\index{shttp\+\_\+alloc\+\_\+response\+\_\+head@{shttp\+\_\+alloc\+\_\+response\+\_\+head}!simple\+\_\+http.\+c@{simple\+\_\+http.\+c}}
+\subsubsection[{shttp\+\_\+alloc\+\_\+response\+\_\+head}]{\setlength{\rightskip}{0pt plus 5cm}int shttp\+\_\+alloc\+\_\+response\+\_\+head (
+\begin{DoxyParamCaption}
+\item[{struct {\bf http\+\_\+req} $\ast$}]{r, }
+\item[{char $\ast$}]{data, }
+\item[{int}]{dlen}
+\end{DoxyParamCaption}
+)}\label{simple__http_8c_a21420db9afc47d9a1ef290b03bd4dd82}
+\hypertarget{simple__http_8c_a5b414a998ecd5ffa4cd8c733977c49cd}{}\index{simple\+\_\+http.\+c@{simple\+\_\+http.\+c}!shttp\+\_\+free\+\_\+req@{shttp\+\_\+free\+\_\+req}}
+\index{shttp\+\_\+free\+\_\+req@{shttp\+\_\+free\+\_\+req}!simple\+\_\+http.\+c@{simple\+\_\+http.\+c}}
+\subsubsection[{shttp\+\_\+free\+\_\+req}]{\setlength{\rightskip}{0pt plus 5cm}void shttp\+\_\+free\+\_\+req (
+\begin{DoxyParamCaption}
+\item[{struct {\bf http\+\_\+req} $\ast$}]{r}
+\end{DoxyParamCaption}
+)}\label{simple__http_8c_a5b414a998ecd5ffa4cd8c733977c49cd}
+\hypertarget{simple__http_8c_a1e749920e6117fa23f7bab8a3ccabbed}{}\index{simple\+\_\+http.\+c@{simple\+\_\+http.\+c}!shttp\+\_\+get\+\_\+path@{shttp\+\_\+get\+\_\+path}}
+\index{shttp\+\_\+get\+\_\+path@{shttp\+\_\+get\+\_\+path}!simple\+\_\+http.\+c@{simple\+\_\+http.\+c}}
+\subsubsection[{shttp\+\_\+get\+\_\+path}]{\setlength{\rightskip}{0pt plus 5cm}int shttp\+\_\+get\+\_\+path (
+\begin{DoxyParamCaption}
+\item[{struct {\bf http\+\_\+req} $\ast$}]{r}
+\end{DoxyParamCaption}
+)}\label{simple__http_8c_a1e749920e6117fa23f7bab8a3ccabbed}

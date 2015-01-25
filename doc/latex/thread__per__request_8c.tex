@@ -1,0 +1,58 @@
+\hypertarget{thread__per__request_8c}{}\section{thread\+\_\+per\+\_\+request.\+c File Reference}
+\label{thread__per__request_8c}\index{thread\+\_\+per\+\_\+request.\+c@{thread\+\_\+per\+\_\+request.\+c}}
+{\ttfamily \#include $<$pthread.\+h$>$}\\*
+{\ttfamily \#include $<$stdlib.\+h$>$}\\*
+{\ttfamily \#include $<$server.\+h$>$}\\*
+{\ttfamily \#include $<$util.\+h$>$}\\*
+{\ttfamily \#include $<$assert.\+h$>$}\\*
+{\ttfamily \#include $<$linkedlist.\+h$>$}\\*
+{\ttfamily \#include $<$unistd.\+h$>$}\\*
+{\ttfamily \#include $<$stdio.\+h$>$}\\*
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void $\ast$ \hyperlink{thread__per__request_8c_ad03f04066e067c5aaabc8d553754591b}{thread\+\_\+process} (void $\ast$fd)
+\begin{DoxyCompactList}\small\item\em thread\+\_\+process Function to execute on the threads; services the client\textquotesingle{}s request \end{DoxyCompactList}\item 
+void \hyperlink{thread__per__request_8c_a18f78457659cc1bf6cc15cc3994e9aa7}{process\+\_\+threads\+\_\+per\+\_\+request} (int max\+\_\+concurrency, int accept\+\_\+fd)
+\begin{DoxyCompactList}\small\item\em process\+\_\+threads\+\_\+per\+\_\+request Processes the request using a thread per request \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\hypertarget{thread__per__request_8c_a18f78457659cc1bf6cc15cc3994e9aa7}{}\index{thread\+\_\+per\+\_\+request.\+c@{thread\+\_\+per\+\_\+request.\+c}!process\+\_\+threads\+\_\+per\+\_\+request@{process\+\_\+threads\+\_\+per\+\_\+request}}
+\index{process\+\_\+threads\+\_\+per\+\_\+request@{process\+\_\+threads\+\_\+per\+\_\+request}!thread\+\_\+per\+\_\+request.\+c@{thread\+\_\+per\+\_\+request.\+c}}
+\subsubsection[{process\+\_\+threads\+\_\+per\+\_\+request}]{\setlength{\rightskip}{0pt plus 5cm}void process\+\_\+threads\+\_\+per\+\_\+request (
+\begin{DoxyParamCaption}
+\item[{int}]{max\+\_\+concurrency, }
+\item[{int}]{accept\+\_\+fd}
+\end{DoxyParamCaption}
+)}\label{thread__per__request_8c_a18f78457659cc1bf6cc15cc3994e9aa7}
+
+
+process\+\_\+threads\+\_\+per\+\_\+request Processes the request using a thread per request 
+
+
+\begin{DoxyParams}{Parameters}
+{\em max\+\_\+concurrency} & The maximum number of concurrent threads \\
+\hline
+{\em accept\+\_\+fd} & The accepted file descriptor \\
+\hline
+\end{DoxyParams}
+\hypertarget{thread__per__request_8c_ad03f04066e067c5aaabc8d553754591b}{}\index{thread\+\_\+per\+\_\+request.\+c@{thread\+\_\+per\+\_\+request.\+c}!thread\+\_\+process@{thread\+\_\+process}}
+\index{thread\+\_\+process@{thread\+\_\+process}!thread\+\_\+per\+\_\+request.\+c@{thread\+\_\+per\+\_\+request.\+c}}
+\subsubsection[{thread\+\_\+process}]{\setlength{\rightskip}{0pt plus 5cm}void$\ast$ thread\+\_\+process (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{fd}
+\end{DoxyParamCaption}
+)}\label{thread__per__request_8c_ad03f04066e067c5aaabc8d553754591b}
+
+
+thread\+\_\+process Function to execute on the threads; services the client\textquotesingle{}s request 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fd} & The file descriptor of the opened request \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 
+\end{DoxyReturn}

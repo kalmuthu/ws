@@ -1,0 +1,59 @@
+\hypertarget{util_8c}{}\section{util.\+c File Reference}
+\label{util_8c}\index{util.\+c@{util.\+c}}
+{\ttfamily \#include $<$stdlib.\+h$>$}\\*
+{\ttfamily \#include $<$stdio.\+h$>$}\\*
+{\ttfamily \#include $<$unistd.\+h$>$}\\*
+{\ttfamily \#include $<$assert.\+h$>$}\\*
+{\ttfamily \#include $<$server.\+h$>$}\\*
+{\ttfamily \#include $<$simple\+\_\+http.\+h$>$}\\*
+{\ttfamily \#include $<$content.\+h$>$}\\*
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{util_8c_ab7b3e960de8ffc50d53bf7c798c3d910}{M\+A\+X\+\_\+\+R\+E\+Q\+\_\+\+S\+Z}~1024
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structhttp__req}{http\+\_\+req} $\ast$ \hyperlink{util_8c_aebd39df07e85ec35c33ca88162de25b2}{newfd\+\_\+create\+\_\+req} (int new\+\_\+fd)
+\item 
+void \hyperlink{util_8c_a498024024e00c0240bd833f2130122b0}{respond\+\_\+and\+\_\+free\+\_\+req} (struct \hyperlink{structhttp__req}{http\+\_\+req} $\ast$r, char $\ast$response, int len)
+\item 
+void \hyperlink{util_8c_ad23a90dab88cd6a6b3a505370ceae817}{client\+\_\+process} (int fd)
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\hypertarget{util_8c_ab7b3e960de8ffc50d53bf7c798c3d910}{}\index{util.\+c@{util.\+c}!M\+A\+X\+\_\+\+R\+E\+Q\+\_\+\+S\+Z@{M\+A\+X\+\_\+\+R\+E\+Q\+\_\+\+S\+Z}}
+\index{M\+A\+X\+\_\+\+R\+E\+Q\+\_\+\+S\+Z@{M\+A\+X\+\_\+\+R\+E\+Q\+\_\+\+S\+Z}!util.\+c@{util.\+c}}
+\subsubsection[{M\+A\+X\+\_\+\+R\+E\+Q\+\_\+\+S\+Z}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\+A\+X\+\_\+\+R\+E\+Q\+\_\+\+S\+Z~1024}\label{util_8c_ab7b3e960de8ffc50d53bf7c798c3d910}
+Redistribution of this file is permitted under the G\+N\+U General Public License v2.
+
+Copyright 2012 by Gabriel Parmer. Author\+: Gabriel Parmer, \href{mailto:gparmer@gwu.edu}{\tt gparmer@gwu.\+edu}, 2012 
+
+\subsection{Function Documentation}
+\hypertarget{util_8c_ad23a90dab88cd6a6b3a505370ceae817}{}\index{util.\+c@{util.\+c}!client\+\_\+process@{client\+\_\+process}}
+\index{client\+\_\+process@{client\+\_\+process}!util.\+c@{util.\+c}}
+\subsubsection[{client\+\_\+process}]{\setlength{\rightskip}{0pt plus 5cm}void client\+\_\+process (
+\begin{DoxyParamCaption}
+\item[{int}]{fd}
+\end{DoxyParamCaption}
+)}\label{util_8c_ad23a90dab88cd6a6b3a505370ceae817}
+Redistribution of this file is permitted under the G\+N\+U General Public License v2.
+
+Copyright 2012 by Gabriel Parmer. Author\+: Gabriel Parmer, \href{mailto:gparmer@gwu.edu}{\tt gparmer@gwu.\+edu}, 2012 \hypertarget{util_8c_aebd39df07e85ec35c33ca88162de25b2}{}\index{util.\+c@{util.\+c}!newfd\+\_\+create\+\_\+req@{newfd\+\_\+create\+\_\+req}}
+\index{newfd\+\_\+create\+\_\+req@{newfd\+\_\+create\+\_\+req}!util.\+c@{util.\+c}}
+\subsubsection[{newfd\+\_\+create\+\_\+req}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf http\+\_\+req}$\ast$ newfd\+\_\+create\+\_\+req (
+\begin{DoxyParamCaption}
+\item[{int}]{new\+\_\+fd}
+\end{DoxyParamCaption}
+)}\label{util_8c_aebd39df07e85ec35c33ca88162de25b2}
+\hypertarget{util_8c_a498024024e00c0240bd833f2130122b0}{}\index{util.\+c@{util.\+c}!respond\+\_\+and\+\_\+free\+\_\+req@{respond\+\_\+and\+\_\+free\+\_\+req}}
+\index{respond\+\_\+and\+\_\+free\+\_\+req@{respond\+\_\+and\+\_\+free\+\_\+req}!util.\+c@{util.\+c}}
+\subsubsection[{respond\+\_\+and\+\_\+free\+\_\+req}]{\setlength{\rightskip}{0pt plus 5cm}void respond\+\_\+and\+\_\+free\+\_\+req (
+\begin{DoxyParamCaption}
+\item[{struct {\bf http\+\_\+req} $\ast$}]{r, }
+\item[{char $\ast$}]{response, }
+\item[{int}]{len}
+\end{DoxyParamCaption}
+)}\label{util_8c_a498024024e00c0240bd833f2130122b0}

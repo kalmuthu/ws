@@ -1,0 +1,54 @@
+\hypertarget{simple__http_8h}{}\section{simple\+\_\+http.\+h File Reference}
+\label{simple__http_8h}\index{simple\+\_\+http.\+h@{simple\+\_\+http.\+h}}
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structhttp__req}{http\+\_\+req}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structhttp__req}{http\+\_\+req} $\ast$ \hyperlink{simple__http_8h_a81a28a545701dd4d850b705d02ff601a}{shttp\+\_\+alloc\+\_\+req} (int fd, char $\ast$request)
+\item 
+void \hyperlink{simple__http_8h_a5b414a998ecd5ffa4cd8c733977c49cd}{shttp\+\_\+free\+\_\+req} (struct \hyperlink{structhttp__req}{http\+\_\+req} $\ast$r)
+\item 
+int \hyperlink{simple__http_8h_a1e749920e6117fa23f7bab8a3ccabbed}{shttp\+\_\+get\+\_\+path} (struct \hyperlink{structhttp__req}{http\+\_\+req} $\ast$r)
+\item 
+int \hyperlink{simple__http_8h_ab230dea8e433626ce368e3d79117a66f}{shttp\+\_\+alloc\+\_\+response\+\_\+head} (struct \hyperlink{structhttp__req}{http\+\_\+req} $\ast$r, char $\ast$resp, int rlen)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\hypertarget{simple__http_8h_a81a28a545701dd4d850b705d02ff601a}{}\index{simple\+\_\+http.\+h@{simple\+\_\+http.\+h}!shttp\+\_\+alloc\+\_\+req@{shttp\+\_\+alloc\+\_\+req}}
+\index{shttp\+\_\+alloc\+\_\+req@{shttp\+\_\+alloc\+\_\+req}!simple\+\_\+http.\+h@{simple\+\_\+http.\+h}}
+\subsubsection[{shttp\+\_\+alloc\+\_\+req}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf http\+\_\+req}$\ast$ shttp\+\_\+alloc\+\_\+req (
+\begin{DoxyParamCaption}
+\item[{int}]{fd, }
+\item[{char $\ast$}]{request}
+\end{DoxyParamCaption}
+)}\label{simple__http_8h_a81a28a545701dd4d850b705d02ff601a}
+Redistribution of this file is permitted under the G\+N\+U General Public License v2.
+
+Copyright 2012 by Gabriel Parmer. Author\+: Gabriel Parmer, \href{mailto:gparmer@gwu.edu}{\tt gparmer@gwu.\+edu}, 2012 \hypertarget{simple__http_8h_ab230dea8e433626ce368e3d79117a66f}{}\index{simple\+\_\+http.\+h@{simple\+\_\+http.\+h}!shttp\+\_\+alloc\+\_\+response\+\_\+head@{shttp\+\_\+alloc\+\_\+response\+\_\+head}}
+\index{shttp\+\_\+alloc\+\_\+response\+\_\+head@{shttp\+\_\+alloc\+\_\+response\+\_\+head}!simple\+\_\+http.\+h@{simple\+\_\+http.\+h}}
+\subsubsection[{shttp\+\_\+alloc\+\_\+response\+\_\+head}]{\setlength{\rightskip}{0pt plus 5cm}int shttp\+\_\+alloc\+\_\+response\+\_\+head (
+\begin{DoxyParamCaption}
+\item[{struct {\bf http\+\_\+req} $\ast$}]{r, }
+\item[{char $\ast$}]{resp, }
+\item[{int}]{rlen}
+\end{DoxyParamCaption}
+)}\label{simple__http_8h_ab230dea8e433626ce368e3d79117a66f}
+\hypertarget{simple__http_8h_a5b414a998ecd5ffa4cd8c733977c49cd}{}\index{simple\+\_\+http.\+h@{simple\+\_\+http.\+h}!shttp\+\_\+free\+\_\+req@{shttp\+\_\+free\+\_\+req}}
+\index{shttp\+\_\+free\+\_\+req@{shttp\+\_\+free\+\_\+req}!simple\+\_\+http.\+h@{simple\+\_\+http.\+h}}
+\subsubsection[{shttp\+\_\+free\+\_\+req}]{\setlength{\rightskip}{0pt plus 5cm}void shttp\+\_\+free\+\_\+req (
+\begin{DoxyParamCaption}
+\item[{struct {\bf http\+\_\+req} $\ast$}]{r}
+\end{DoxyParamCaption}
+)}\label{simple__http_8h_a5b414a998ecd5ffa4cd8c733977c49cd}
+\hypertarget{simple__http_8h_a1e749920e6117fa23f7bab8a3ccabbed}{}\index{simple\+\_\+http.\+h@{simple\+\_\+http.\+h}!shttp\+\_\+get\+\_\+path@{shttp\+\_\+get\+\_\+path}}
+\index{shttp\+\_\+get\+\_\+path@{shttp\+\_\+get\+\_\+path}!simple\+\_\+http.\+h@{simple\+\_\+http.\+h}}
+\subsubsection[{shttp\+\_\+get\+\_\+path}]{\setlength{\rightskip}{0pt plus 5cm}int shttp\+\_\+get\+\_\+path (
+\begin{DoxyParamCaption}
+\item[{struct {\bf http\+\_\+req} $\ast$}]{r}
+\end{DoxyParamCaption}
+)}\label{simple__http_8h_a1e749920e6117fa23f7bab8a3ccabbed}

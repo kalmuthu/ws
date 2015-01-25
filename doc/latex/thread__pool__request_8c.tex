@@ -1,0 +1,77 @@
+\hypertarget{thread__pool__request_8c}{}\section{thread\+\_\+pool\+\_\+request.\+c File Reference}
+\label{thread__pool__request_8c}\index{thread\+\_\+pool\+\_\+request.\+c@{thread\+\_\+pool\+\_\+request.\+c}}
+{\ttfamily \#include $<$stdlib.\+h$>$}\\*
+{\ttfamily \#include $<$threadpool.\+h$>$}\\*
+{\ttfamily \#include $<$server.\+h$>$}\\*
+{\ttfamily \#include $<$util.\+h$>$}\\*
+{\ttfamily \#include $<$stdio.\+h$>$}\\*
+{\ttfamily \#include $<$assert.\+h$>$}\\*
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void $\ast$ \hyperlink{thread__pool__request_8c_ae075b9f25ee51b47002326796df6c519}{thread\+\_\+process\+\_\+in\+\_\+pool} (void $\ast$args)
+\begin{DoxyCompactList}\small\item\em thread\+\_\+process\+\_\+in\+\_\+pool Thread function; services the client request \end{DoxyCompactList}\item 
+int \hyperlink{thread__pool__request_8c_a9098524dc72c53071a934dc8db68c53a}{server\+\_\+process} (void $\ast$args)
+\begin{DoxyCompactList}\small\item\em server\+\_\+process The server function pointer; accepts the request \end{DoxyCompactList}\item 
+void \hyperlink{thread__pool__request_8c_abac315bd81675cb377bb5546b1b336d8}{process\+\_\+request\+\_\+thread\+\_\+pool} (int max\+\_\+size, int accept\+\_\+fd)
+\begin{DoxyCompactList}\small\item\em process\+\_\+request\+\_\+thread\+\_\+pool Creates and runs a thread pool \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\hypertarget{thread__pool__request_8c_abac315bd81675cb377bb5546b1b336d8}{}\index{thread\+\_\+pool\+\_\+request.\+c@{thread\+\_\+pool\+\_\+request.\+c}!process\+\_\+request\+\_\+thread\+\_\+pool@{process\+\_\+request\+\_\+thread\+\_\+pool}}
+\index{process\+\_\+request\+\_\+thread\+\_\+pool@{process\+\_\+request\+\_\+thread\+\_\+pool}!thread\+\_\+pool\+\_\+request.\+c@{thread\+\_\+pool\+\_\+request.\+c}}
+\subsubsection[{process\+\_\+request\+\_\+thread\+\_\+pool}]{\setlength{\rightskip}{0pt plus 5cm}void process\+\_\+request\+\_\+thread\+\_\+pool (
+\begin{DoxyParamCaption}
+\item[{int}]{max\+\_\+size, }
+\item[{int}]{accept\+\_\+fd}
+\end{DoxyParamCaption}
+)}\label{thread__pool__request_8c_abac315bd81675cb377bb5546b1b336d8}
+
+
+process\+\_\+request\+\_\+thread\+\_\+pool Creates and runs a thread pool 
+
+
+\begin{DoxyParams}{Parameters}
+{\em max\+\_\+size} & The max size of the thread pool \\
+\hline
+{\em accept\+\_\+fd} & The accepted file descriptor of the listener \\
+\hline
+\end{DoxyParams}
+\hypertarget{thread__pool__request_8c_a9098524dc72c53071a934dc8db68c53a}{}\index{thread\+\_\+pool\+\_\+request.\+c@{thread\+\_\+pool\+\_\+request.\+c}!server\+\_\+process@{server\+\_\+process}}
+\index{server\+\_\+process@{server\+\_\+process}!thread\+\_\+pool\+\_\+request.\+c@{thread\+\_\+pool\+\_\+request.\+c}}
+\subsubsection[{server\+\_\+process}]{\setlength{\rightskip}{0pt plus 5cm}int server\+\_\+process (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{args}
+\end{DoxyParamCaption}
+)}\label{thread__pool__request_8c_a9098524dc72c53071a934dc8db68c53a}
+
+
+server\+\_\+process The server function pointer; accepts the request 
+
+
+\begin{DoxyParams}{Parameters}
+{\em args} & The file descriptor of the port being listened \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A new file descriptor for the accepted connection 
+\end{DoxyReturn}
+\hypertarget{thread__pool__request_8c_ae075b9f25ee51b47002326796df6c519}{}\index{thread\+\_\+pool\+\_\+request.\+c@{thread\+\_\+pool\+\_\+request.\+c}!thread\+\_\+process\+\_\+in\+\_\+pool@{thread\+\_\+process\+\_\+in\+\_\+pool}}
+\index{thread\+\_\+process\+\_\+in\+\_\+pool@{thread\+\_\+process\+\_\+in\+\_\+pool}!thread\+\_\+pool\+\_\+request.\+c@{thread\+\_\+pool\+\_\+request.\+c}}
+\subsubsection[{thread\+\_\+process\+\_\+in\+\_\+pool}]{\setlength{\rightskip}{0pt plus 5cm}void$\ast$ thread\+\_\+process\+\_\+in\+\_\+pool (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{args}
+\end{DoxyParamCaption}
+)}\label{thread__pool__request_8c_ae075b9f25ee51b47002326796df6c519}
+
+
+thread\+\_\+process\+\_\+in\+\_\+pool Thread function; services the client request 
+
+
+\begin{DoxyParams}{Parameters}
+{\em args} & The pool\+\_\+args \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 
+\end{DoxyReturn}
