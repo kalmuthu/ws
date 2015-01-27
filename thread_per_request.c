@@ -8,6 +8,27 @@
 #include <unistd.h>
 #include <stdio.h>
 #include <assert.h>
+#include <signal.h>
+
+/**
+ * @brief list The list used for holding the threads
+ */
+list_t list;
+
+/**
+ * @brief clean_routine Function to cleanup the list
+ * @param signal the signal being handled
+ */
+void clean_request_routine(__attribute__((unused)) int signal){
+    //empty list
+    while(list.head){
+        pthread_t * thread = (pthread_t *)(peek_list(&list));
+        assert(thread);
+        pthread_join(*thread, NULL);
+        pop_list(&list);
+        free(thread);
+    }
+}
 
 /**
  * @brief thread_process Function to execute on the threads; services the client's request
@@ -28,16 +49,19 @@ void * thread_process(void * fd){
  * @param accept_fd The accepted file descriptor
  */
 void process_threads_per_request(int max_concurrency, int accept_fd){
-	int num_threads_running = 0;
+    //catch ctrl+c
+    signal(SIGINT, clean_request_routine);
+    //catch kill
+    signal(SIGTERM, clean_request_routine);
 
-    //the list
-    list_t list;
+
+    int num_threads_running = 0;
+
+
     init_list(&list);
 
 	//loop continuously
     while(1){
-    //int i = 0;
-    //while(i < 1000){
         //check to see if we can add any new threads
         if(num_threads_running >= max_concurrency){
             pthread_t * thread = (pthread_t *)(peek_list(&list));
@@ -62,17 +86,7 @@ void process_threads_per_request(int max_concurrency, int accept_fd){
             //push list
             push_list(&list, thread);
 			num_threads_running++;
-            //++i;
 		}
 	}
-
-    //empty list
-    while(list.head){
-        pthread_t * thread = (pthread_t *)(peek_list(&list));
-        assert(thread);
-        pthread_join(*thread, NULL);
-        pop_list(&list);
-        free(thread);
-    }
 }
 
