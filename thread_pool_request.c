@@ -5,19 +5,6 @@
 #include <stdio.h>
 #include <assert.h>
 #include <unistd.h>
-#include <signal.h>
-
-/**
- * @brief pool The thread pool; must be global to be used with signal interrupt
- */
-pool_t * pool;
-
-void clean_pool_routine(__attribute__((unused)) int signal){
-    if(pool){
-        sleep(5); //wait for the threads to complete
-        free_pool(pool);
-    }
-}
 
 /**
  * @brief thread_process_in_pool Thread function; services the client request
@@ -56,16 +43,16 @@ int server_process(void * args){
  * @param accept_fd The accepted file descriptor of the listener
  */
 void process_request_thread_pool(int max_size, int accept_fd){
-    //catch ctrl+c
-    signal(SIGINT, clean_pool_routine);
-    //catch kill
-    signal(SIGTERM, clean_pool_routine);
-
-    //create the thread pool
-    pool = init_pool(max_size);
+	//create the thread pool
+	pool_t * pool = init_pool(max_size);
 
 	//loop
     while(1){
+    //int i = 0;
+    //while(i < 1000){
 		add_to_pool(pool, (void *)server_process, thread_process_in_pool, &accept_fd);
+        //i++;
     }
+    sleep(5); //wait for the threads to complete
+	free_pool(pool);
 }

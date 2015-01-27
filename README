@@ -6,7 +6,7 @@ Advanced OS
 Webserver implementation
 
 Notes:
-The sample output was performed with the counters (which are commented out) rather than the infinite loops in the current code. I did this based on the Piazza response.
+The sample output was performed with the counters (which are commented out) rather than the infinite loops shown here.
 
 The linked list design comes from previous work (mainly from interviews I've studied up from and data structures from undergrad). Likewise, the threadpool design was an original creation although it drew from some of my experience as a web developer with JavaScript and callback functions (function pointers are close enough).
 
