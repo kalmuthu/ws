@@ -13,33 +13,33 @@ void * start_job(void * args){
     struct job * job;
     //continuously loop
     while(1){
-        printf("Acquiring worker thread mutex\n");
+        //printf("Acquiring worker thread mutex\n");
         //acquire lock
         pthread_mutex_lock(pool_args->jobs->mutex);
-        printf("CHECKING WORKER QUEUE\n");
+        //printf("CHECKING WORKER QUEUE\n");
         while(!pool_args->jobs->head){
             //break loop if count reached
             if(pool_args->jobs->completed_jobs >= 1000){
-                printf("HIT MAX LIMIT; exiting...\n");
+                //printf("HIT MAX LIMIT; exiting...\n");
                 pthread_cond_signal(pool_args->jobs->cond);
                 pthread_mutex_unlock(pool_args->jobs->mutex);
-                break;
+                return 0;
             }
-            printf("WAITING IF THERE'S A JOB READY\n");
+            //printf("WAITING IF THERE'S A JOB READY\n");
             //wait until there's a job ready
             pthread_cond_wait(pool_args->jobs->cond, pool_args->jobs->mutex);
         }
 
-        printf("READING NEXT JOB\n");
+        //printf("READING NEXT JOB\n");
         //read the next job
         job = pool_args->jobs->head;
         remove_job(pool_args->jobs, job);
         pool_args->jobs->current_jobs--;
 
-        printf("PERFORMING TASK\n");
+        //printf("PERFORMING TASK\n");
         //perform action
         job->function(job->args);
-        printf("TASK COMPLETE\n");
+        //printf("TASK COMPLETE\n");
         free(job);
 
         //update counts
@@ -104,17 +104,17 @@ void process_request_thread_pool(int max_size, int accept_fd){
     //read the pools
     i = 0;
     while(i < 1000){
-        printf("STARTING POOL\n");
+        //printf("STARTING POOL\n");
         //acquire pool lock
         pthread_mutex_lock(pool_args->jobs->mutex);
-        printf("CHECKING IF WE CAN ENQUEUE\n");
+        //printf("CHECKING IF WE CAN ENQUEUE\n");
         //check to see if we can enqueue
         while(pool_args->jobs->current_jobs >= pool_args->pool_max_size){
-            printf("WAITING UNTIL WORKER QUEUE IS FREE\n");
+            //printf("WAITING UNTIL WORKER QUEUE IS FREE\n");
             //wait
             pthread_cond_wait(pool_args->jobs->cond, pool_args->jobs->mutex);
         }
-        printf("INSERTING JOB: %d\n", i);
+        //printf("INSERTING JOB: %d\n", i);
         //insert jobs into the queue
         struct job * job = (struct job *)malloc(sizeof(struct job));
         int * fd_ptr = (int *)malloc(sizeof(int));
@@ -143,6 +143,7 @@ void process_request_thread_pool(int max_size, int accept_fd){
         //wait
         pthread_cond_wait(pool_args->jobs->cond, pool_args->jobs->mutex);
     }
+    pthread_cond_broadcast(pool_args->jobs->cond);
     pthread_mutex_unlock(pool_args->jobs->mutex);
 
     //cleanup
@@ -150,7 +151,6 @@ void process_request_thread_pool(int max_size, int accept_fd){
     pthread_t * thread;
     while(head){
         thread = head->thread;
-        pthread_kill(*thread, 0);
         pthread_join(*thread, NULL);
         free(thread);
         remove_from_thread_list(head, thread_list);
