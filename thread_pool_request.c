@@ -34,13 +34,13 @@ void * start_job(void * args){
         //read the next job
         job = pool_args->jobs->head;
         remove_job(pool_args->jobs, job);
-        free(job);
         pool_args->jobs->current_jobs--;
 
         printf("PERFORMING TASK\n");
         //perform action
         job->function(job->args);
         printf("TASK COMPLETE\n");
+        free(job);
 
         //update counts
         pool_args->jobs->completed_jobs++;
