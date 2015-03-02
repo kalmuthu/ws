@@ -30,10 +30,11 @@ void * start_job(void * args){
             pthread_cond_wait(pool_args->jobs->cond, pool_args->jobs->mutex);
         }
 
-        //printf("READING NEXT JOB\n");
+        printf("READING NEXT JOB\n");
         //read the next job
         job = pool_args->jobs->head;
         remove_job(pool_args->jobs, job);
+        free(job);
         pool_args->jobs->current_jobs--;
 
         printf("PERFORMING TASK\n");
