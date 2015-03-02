@@ -1,40 +1,69 @@
 #include <stdlib.h>
-#include <threadpool.h>
+#include "threadlist.h"
+#include "threadpool.h"
 #include <server.h> //server functions
 #include <util.h> //client functions
 #include <stdio.h>
 #include <assert.h>
 #include <unistd.h>
+#include <stddef.h>
 
-/**
- * @brief thread_process_in_pool Thread function; services the client request
- * @param args The pool_args
- * @return 0
- */
-void * thread_process_in_pool(void * args){
-    assert(args);
-	pool_arg_t * pool_args = (pool_arg_t *)args;
-	int fd_int = (int)pool_args->args;
-	client_process(fd_int);
-	//signal that the thread is complete
-	pool_t * pool = pool_args->pool;
-	remove_from_pool(pool, pool_args->curr_thread);
-	free(pool_args);
+void * start_job(void * args){
+    struct pool_args * pool_args = (struct pool_args *)args;
+    struct job * job;
+    //continuously loop
+    while(1){
+        //printf("Acquiring worker thread mutex\n");
+        //acquire lock
+        pthread_mutex_lock(pool_args->jobs->mutex);
+        //break loop if count reached
+        if(pool_args->jobs->completed_jobs >= 1000){
+            //printf("HIT MAX LIMIT; exiting...\n");
+            pthread_cond_signal(pool_args->jobs->cond);
+            pthread_mutex_unlock(pool_args->jobs->mutex);
+            break;
+        }
+        //printf("CHECKING WORKER QUEUE\n");
+        while(pool_args->jobs->current_jobs <= 0){
+            //printf("WAITING IF THERE'S A JOB READY\n");
+            //wait until there's a job ready
+            pthread_cond_wait(pool_args->jobs->cond, pool_args->jobs->mutex);
+        }
 
-	return 0;
+        //printf("READING NEXT JOB\n");
+        //read the next job
+        job = pool_args->jobs->head;
+        remove_job(pool_args->jobs, job);
+        pool_args->jobs->current_jobs--;
+
+        //printf("PERFORMING TASK\n");
+        //perform action
+        job->function(job->args);
+        //printf("TASK COMPLETE\n");
+
+        //update counts
+        pool_args->jobs->completed_jobs++;
+
+        //signal
+        pthread_cond_signal(pool_args->jobs->cond);
+
+        //release lock
+        pthread_mutex_unlock(pool_args->jobs->mutex);
+    }
+    return 0;
 }
 
 /**
- * @brief server_process The server function pointer; accepts the request
- * @param args The file descriptor of the port being listened
- * @return A new file descriptor for the accepted connection
+ * @brief thread_process Function to execute on the threads; services the client's request
+ * @param fd The file descriptor of the opened request
+ * @return 0
  */
-int server_process(void * args){
-    assert(args);
-	int * fd = (int *)args;
-    int result = server_accept(*fd);
-    assert(result > 0);
-    return result;
+void * pool_thread_process(void * fd){
+    assert(fd);
+    int * fd_int = (int *)fd;
+    client_process(*fd_int);
+    free(fd_int);
+    return 0;
 }
 
 /**
@@ -43,16 +72,98 @@ int server_process(void * args){
  * @param accept_fd The accepted file descriptor of the listener
  */
 void process_request_thread_pool(int max_size, int accept_fd){
-	//create the thread pool
-	pool_t * pool = init_pool(max_size);
+    //initialize pool args
+    struct pool_args * pool_args  = (struct pool_args *)malloc(sizeof(pool_args));
+    pool_args->pool_max_size = max_size;
+    pool_args->jobs = (struct job_list *)malloc(sizeof(struct job_list));
 
-	//loop
-    while(1){
-    //int i = 0;
-    //while(i < 1000){
-		add_to_pool(pool, (void *)server_process, thread_process_in_pool, &accept_fd);
-        //i++;
+    //initalize job list
+    pool_args->jobs->cond = (pthread_cond_t *)malloc(sizeof(pthread_cond_t));
+    pool_args->jobs->mutex = (pthread_mutex_t *)malloc(sizeof(pthread_mutex_t));
+    pthread_mutex_init(pool_args->jobs->mutex, NULL);
+    pthread_cond_init(pool_args->jobs->cond, NULL);
+    pool_args->jobs->head = NULL;
+    pool_args->jobs->tail = NULL;
+    pool_args->jobs->current_jobs = 0;
+    pool_args->jobs->completed_jobs = 0;
+
+
+    //initalize the threads
+    struct thread_list * thread_list = (struct thread_list *)malloc(sizeof(struct thread_list));
+    thread_list->head = NULL;
+    thread_list->tail = NULL;
+    int i;
+    for(i = 0; i < max_size; ++i){
+        struct thread_node * node = (struct thread_node *)malloc(sizeof(struct thread_node));
+        node->thread = (pthread_t *)malloc(sizeof(pthread_t));
+        pthread_create(node->thread, NULL, start_job, pool_args);
+        insert_thread_list_tail(node, thread_list);
     }
-    sleep(5); //wait for the threads to complete
-	free_pool(pool);
+
+    //read the pools
+    i = 0;
+    while(i < 1000){
+        //printf("STARTING POOL\n");
+        //acquire pool lock
+        pthread_mutex_lock(pool_args->jobs->mutex);
+        //printf("CHECKING IF WE CAN ENQUEUE\n");
+        //check to see if we can enqueue
+        while(pool_args->jobs->current_jobs >= pool_args->pool_max_size){
+            //printf("WAITING UNTIL WORKER QUEUE IS FREE\n");
+            //wait
+            pthread_cond_wait(pool_args->jobs->cond, pool_args->jobs->mutex);
+        }
+        //printf("INSERTING JOB: %d\n", i);
+        //insert jobs into the queue
+        struct job * job = (struct job *)malloc(sizeof(struct job));
+        int * fd_ptr = (int *)malloc(sizeof(int));
+        assert(fd_ptr);
+        *fd_ptr = server_accept(accept_fd);
+        assert(*fd_ptr > 0);
+        job->args = fd_ptr;
+        job->function = pool_thread_process;
+        insert_job_tail(pool_args->jobs, job);
+        //increment jobs
+        pool_args->jobs->current_jobs++;
+
+        //signal
+        pthread_cond_signal(pool_args->jobs->cond);
+
+        //release lock
+        pthread_mutex_unlock(pool_args->jobs->mutex);
+        i++;
+    }
+
+    //check if we can cleanup
+    //acquire lock
+    pthread_mutex_lock(pool_args->jobs->mutex);
+    //check to see if we can leave
+    while(pool_args->jobs->completed_jobs < 1000){
+        //wait
+        pthread_cond_wait(pool_args->jobs->cond, pool_args->jobs->mutex);
+    }
+    pthread_mutex_unlock(pool_args->jobs->mutex);
+
+    //cleanup
+    struct thread_node * head = thread_list->head;
+    pthread_t * thread;
+    while(head){
+        thread = head->thread;
+        pthread_kill(*thread, 0);
+        pthread_join(*thread, NULL);
+        free(thread);
+        remove_from_thread_list(head, thread_list);
+        free(head);
+        head = thread_list->head;
+    }
+    free(thread_list);
+
+    pthread_cond_destroy(pool_args->jobs->cond);
+    free(pool_args->jobs->cond);
+
+    pthread_mutex_destroy(pool_args->jobs->mutex);
+    free(pool_args->jobs->mutex);
+
+    free(pool_args->jobs);
+    free(pool_args);
 }

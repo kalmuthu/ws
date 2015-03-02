@@ -1,4 +1,4 @@
-OBJS=server.o simple_http.o content.o main.o util.o thread_per_request.o linkedlist.o threadpool.o thread_pool_request.o
+OBJS=server.o simple_http.o content.o main.o util.o thread_per_request.o threadlist.o threadpool.o thread_pool_request.o
 CFLAGS=-g -I. -Wall -Wextra -pthread
 #DEFINES=-DTHINK_TIME
 BIN=server

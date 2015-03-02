@@ -1,13 +1,17 @@
-
+#include <stddef.h>
 #include <pthread.h>
 #include <stdlib.h>
 #include <server.h> //server functions
 #include <util.h> //client functions
 #include <assert.h>
-#include <linkedlist.h>
 #include <unistd.h>
 #include <stdio.h>
 #include <assert.h>
+#include "threadlist.h"
+
+
+
+
 
 /**
  * @brief thread_process Function to execute on the threads; services the client's request
@@ -31,21 +35,24 @@ void process_threads_per_request(int max_concurrency, int accept_fd){
 	int num_threads_running = 0;
 
     //the list
-    list_t list;
-    init_list(&list);
+    struct thread_list * thread_list = (struct thread_list *)malloc(sizeof(struct thread_list));
+    thread_list->head = NULL;
+    thread_list->tail = NULL;
 
 	//loop continuously
-    while(1){
-    //int i = 0;
-    //while(i < 1000){
+    //while(1){
+    int i = 0;
+    while(i < 1000){
         //check to see if we can add any new threads
         if(num_threads_running >= max_concurrency){
-            pthread_t * thread = (pthread_t *)(peek_list(&list));
+            struct thread_node * head = thread_list->head;
+            pthread_t * thread = head->thread;
             assert(thread);
 			//wait until the last thread in the queue has finished
             pthread_join(*thread, NULL);
 			//pop it from the list
-            pop_list(&list);
+            remove_from_thread_list(head, thread_list);
+            free(head);
             free(thread);
 			num_threads_running--;
 		}
@@ -60,19 +67,25 @@ void process_threads_per_request(int max_concurrency, int accept_fd){
             assert(thread);
             pthread_create(thread, NULL, &thread_process, (void *)fd_ptr);
             //push list
-            push_list(&list, thread);
+            struct thread_node * node = (struct thread_node *)malloc(sizeof(struct thread_node));
+            node->thread = thread;
+            insert_thread_list_tail(node, thread_list);
 			num_threads_running++;
-            //++i;
+            ++i;
 		}
 	}
 
     //empty list
-    while(list.head){
-        pthread_t * thread = (pthread_t *)(peek_list(&list));
+    while(thread_list->head){
+        struct thread_node * node = thread_list->head;
+        remove_from_thread_list(thread_list->head, thread_list);
+        pthread_t * thread = node->thread;
         assert(thread);
         pthread_join(*thread, NULL);
-        pop_list(&list);
         free(thread);
+        free(node);
     }
+
+    free(thread_list);
 }
 
