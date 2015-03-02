@@ -13,19 +13,19 @@ void * start_job(void * args){
     struct job * job;
     //continuously loop
     while(1){
-        //printf("Acquiring worker thread mutex\n");
+        printf("Acquiring worker thread mutex\n");
         //acquire lock
         pthread_mutex_lock(pool_args->jobs->mutex);
-        //break loop if count reached
-        if(pool_args->jobs->completed_jobs >= 1000){
-            //printf("HIT MAX LIMIT; exiting...\n");
-            pthread_cond_signal(pool_args->jobs->cond);
-            pthread_mutex_unlock(pool_args->jobs->mutex);
-            break;
-        }
-        //printf("CHECKING WORKER QUEUE\n");
+        printf("CHECKING WORKER QUEUE\n");
         while(pool_args->jobs->current_jobs <= 0){
-            //printf("WAITING IF THERE'S A JOB READY\n");
+            //break loop if count reached
+            if(pool_args->jobs->completed_jobs >= 1000){
+                printf("HIT MAX LIMIT; exiting...\n");
+                pthread_cond_signal(pool_args->jobs->cond);
+                pthread_mutex_unlock(pool_args->jobs->mutex);
+                break;
+            }
+            printf("WAITING IF THERE'S A JOB READY\n");
             //wait until there's a job ready
             pthread_cond_wait(pool_args->jobs->cond, pool_args->jobs->mutex);
         }
@@ -36,10 +36,10 @@ void * start_job(void * args){
         remove_job(pool_args->jobs, job);
         pool_args->jobs->current_jobs--;
 
-        //printf("PERFORMING TASK\n");
+        printf("PERFORMING TASK\n");
         //perform action
         job->function(job->args);
-        //printf("TASK COMPLETE\n");
+        printf("TASK COMPLETE\n");
 
         //update counts
         pool_args->jobs->completed_jobs++;
