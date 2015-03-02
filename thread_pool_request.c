@@ -73,7 +73,7 @@ void * pool_thread_process(void * fd){
  */
 void process_request_thread_pool(int max_size, int accept_fd){
     //initialize pool args
-    struct pool_args * pool_args  = (struct pool_args *)malloc(sizeof(pool_args));
+    struct pool_args * pool_args  = (struct pool_args *)malloc(sizeof(struct pool_args));
     pool_args->pool_max_size = max_size;
     pool_args->jobs = (struct job_list *)malloc(sizeof(struct job_list));
 
