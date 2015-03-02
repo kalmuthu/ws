@@ -3,14 +3,35 @@
 
 #include <pthread.h>
 
+/**
+ * @brief The node holding the thread info
+ */
 struct thread_node{
+    /**
+     * @brief The previous node
+     */
     struct thread_node * prev;
+    /**
+     * @brief The next node
+     */
     struct thread_node * next;
+    /**
+     * @brief The thread
+     */
     pthread_t * thread;
 };
 
+/**
+ * @brief The list of threads
+ */
 struct thread_list{
+    /**
+     * @brief The head of the list
+     */
     struct thread_node * head;
+    /**
+     * @brief The tail of the list
+     */
     struct thread_node * tail;
 };
 

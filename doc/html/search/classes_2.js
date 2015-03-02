@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['node',['node',['../structnode.html',1,'']]]
+  ['pool_5fargs',['pool_args',['../structpool__args.html',1,'']]]
 ];

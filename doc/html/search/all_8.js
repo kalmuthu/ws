@@ -7,5 +7,5 @@ var searchData=
   ['max_5fdata_5fsz',['MAX_DATA_SZ',['../main_8c.html#a37c78e253338f41df72e2c904cbc142d',1,'main.c']]],
   ['max_5fdigits',['MAX_DIGITS',['../simple__http_8c.html#a001791a21d538b8b9176287ae60d9b61',1,'simple_http.c']]],
   ['max_5freq_5fsz',['MAX_REQ_SZ',['../util_8c.html#ab7b3e960de8ffc50d53bf7c798c3d910',1,'util.c']]],
-  ['max_5fsize',['max_size',['../structpool.html#aefc86e749ecf9ab0aea5459173180e3a',1,'pool']]]
+  ['mutex',['mutex',['../structjob__list.html#a6ee22ba69c14a2b815c0b61b202cc1ea',1,'job_list']]]
 ];

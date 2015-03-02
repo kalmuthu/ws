@@ -8,6 +8,12 @@
 #include <unistd.h>
 #include <stddef.h>
 
+/**
+ * @brief The function that each worker job performs
+ * @param args The arguments for the pool
+ * @see pool_args
+ * @return 0 if no errors
+ */
 void * start_job(void * args){
     struct pool_args * pool_args = (struct pool_args *)args;
     struct job * job;

@@ -5,7 +5,6 @@ var searchData=
   ['server_2eh',['server.h',['../server_8h.html',1,'']]],
   ['server_5faccept',['server_accept',['../server_8c.html#a98effb119ff8903e5bf46fcbe0865008',1,'server_accept(int fd):&#160;server.c'],['../server_8h.html#a98effb119ff8903e5bf46fcbe0865008',1,'server_accept(int fd):&#160;server.c']]],
   ['server_5fcreate',['server_create',['../server_8c.html#a4e744da03223345aa9191c2efac62eab',1,'server_create(short int port):&#160;server.c'],['../server_8h.html#a4e744da03223345aa9191c2efac62eab',1,'server_create(short int port):&#160;server.c']]],
-  ['server_5fprocess',['server_process',['../thread__pool__request_8c.html#a9098524dc72c53071a934dc8db68c53a',1,'thread_pool_request.c']]],
   ['server_5fsingle_5frequest',['server_single_request',['../main_8c.html#aea156e698920d4ebdf9b1094b710bbaf',1,'main.c']]],
   ['server_5fthread_5fper_5freq',['server_thread_per_req',['../main_8c.html#aef174931b843d05d5ffd7e7bc184ee55',1,'main.c']]],
   ['server_5fthread_5fpool_5fbounded',['server_thread_pool_bounded',['../main_8c.html#ab383924f9aa123b3c83e3b29f8c8a297',1,'main.c']]],
@@ -18,5 +17,6 @@ var searchData=
   ['shttp_5ffree_5freq',['shttp_free_req',['../simple__http_8c.html#a5b414a998ecd5ffa4cd8c733977c49cd',1,'shttp_free_req(struct http_req *r):&#160;simple_http.c'],['../simple__http_8h.html#a5b414a998ecd5ffa4cd8c733977c49cd',1,'shttp_free_req(struct http_req *r):&#160;simple_http.c']]],
   ['shttp_5fget_5fpath',['shttp_get_path',['../simple__http_8c.html#a1e749920e6117fa23f7bab8a3ccabbed',1,'shttp_get_path(struct http_req *r):&#160;simple_http.c'],['../simple__http_8h.html#a1e749920e6117fa23f7bab8a3ccabbed',1,'shttp_get_path(struct http_req *r):&#160;simple_http.c']]],
   ['simple_5fhttp_2ec',['simple_http.c',['../simple__http_8c.html',1,'']]],
-  ['simple_5fhttp_2eh',['simple_http.h',['../simple__http_8h.html',1,'']]]
+  ['simple_5fhttp_2eh',['simple_http.h',['../simple__http_8h.html',1,'']]],
+  ['start_5fjob',['start_job',['../thread__pool__request_8c.html#a106d5c18d3c0eacbdc246211bb179760',1,'thread_pool_request.c']]]
 ];

@@ -92,43 +92,46 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="contents">
 &#160;<ul>
 <li>args
-: <a class="el" href="structpool__arg.html#aaacdcef6afd4123a30bcd16524542f1f">pool_arg_t</a>
+: <a class="el" href="structjob.html#a27bc73ebf705b8716f1c56b398e8e75c">job</a>
 </li>
-<li>attr
-: <a class="el" href="structpool.html#af0360ef4ad9c5c1826b0ecec0cc82ea5">pool_t</a>
+<li>completed_jobs
+: <a class="el" href="structjob__list.html#a9d8c0692782b162d6e2175ac14331731">job_list</a>
 </li>
-<li>count_cv
-: <a class="el" href="structpool.html#aa0f704f15aebe84d4264ef85c8074fc9">pool_t</a>
+<li>cond
+: <a class="el" href="structjob__list.html#a8af8328ba62f96585dcf491746f3a701">job_list</a>
 </li>
-<li>count_mutex
-: <a class="el" href="structpool.html#ae5d29237dc5f83accc03d65f825b127f">pool_t</a>
-</li>
-<li>curr_thread
-: <a class="el" href="structpool__arg.html#a230d8331054ccd6631517549206bd5c5">pool_arg_t</a>
-</li>
-<li>current_size
-: <a class="el" href="structpool.html#a9f7a2e94e1205655dfc8c6bf60862501">pool_t</a>
+<li>current_jobs
+: <a class="el" href="structjob__list.html#ad0528e452b8b72291e35be8138f93f88">job_list</a>
 </li>
 <li>fd
 : <a class="el" href="structhttp__req.html#a1bbc2953bd25c056007726499c6aa25e">http_req</a>
 </li>
+<li>function
+: <a class="el" href="structjob.html#ad2eb73cc76fcdf3f4d090f7a1a6d9eef">job</a>
+</li>
 <li>head
-: <a class="el" href="structlist.html#a41ca53f3f5a14b999af80b8332137ca2">list_t</a>
+: <a class="el" href="structjob__list.html#a7646dca7cf3f507a4b4d4475bd785f44">job_list</a>
+, <a class="el" href="structthread__list.html#aa31aa5712e48e1df1e0f67b1755aae49">thread_list</a>
 </li>
-<li>list
-: <a class="el" href="structpool.html#a95cbd0e4b46a4ae78a62db9f7f4ef3a9">pool_t</a>
+<li>jobs
+: <a class="el" href="structpool__args.html#af8e75c36acb1af36386ace056d050cdf">pool_args</a>
 </li>
-<li>max_size
-: <a class="el" href="structpool.html#aefc86e749ecf9ab0aea5459173180e3a">pool_t</a>
+<li>mutex
+: <a class="el" href="structjob__list.html#a6ee22ba69c14a2b815c0b61b202cc1ea">job_list</a>
 </li>
 <li>next
-: <a class="el" href="structnode.html#a3eaaa938f4adef906b28c0afcaf511d6">node_t</a>
+: <a class="el" href="structjob.html#a4ce8c49fc6bad107445f1676af545999">job</a>
+, <a class="el" href="structthread__node.html#aba08bb7b8eea3f1f69059ab0b0c30e56">thread_node</a>
 </li>
 <li>path
 : <a class="el" href="structhttp__req.html#a81824888fb0747a20a59cd708b4f894f">http_req</a>
 </li>
-<li>pool
-: <a class="el" href="structpool__arg.html#aaee1659dd06b0712e063bc0d95cb7175">pool_arg_t</a>
+<li>pool_max_size
+: <a class="el" href="structpool__args.html#ac4a9f87892a2539e747c3a8290c2cf63">pool_args</a>
+</li>
+<li>prev
+: <a class="el" href="structjob.html#aaf356d89da4d51553a75e6cb0bfd24ac">job</a>
+, <a class="el" href="structthread__node.html#abef18192643853927c19f740040eb1a1">thread_node</a>
 </li>
 <li>req_len
 : <a class="el" href="structhttp__req.html#a9159a052203ea48a87be91c7f671f31c">http_req</a>
@@ -149,16 +152,17 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 : <a class="el" href="structhttp__req.html#ab7c817594b1d5f1f9fab631b95605b5c">http_req</a>
 </li>
 <li>tail
-: <a class="el" href="structlist.html#aba8e9dd90ba0dc731f3e9efa8d2c8354">list_t</a>
+: <a class="el" href="structjob__list.html#a295b0a57fc69ff541f9e8bf3fc8f6ff9">job_list</a>
+, <a class="el" href="structthread__list.html#ac91d095349d891dd99a1de5d863a6863">thread_list</a>
 </li>
-<li>value
-: <a class="el" href="structnode.html#aaf8a798f9224379b485c34f7e0fab66b">node_t</a>
+<li>thread
+: <a class="el" href="structthread__node.html#a6704edf67f6dd0661ecef2194736f50e">thread_node</a>
 </li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Jan 25 2015 12:15:57 for ws by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Mar 2 2015 00:03:33 for ws by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.9.1
 </small></address>

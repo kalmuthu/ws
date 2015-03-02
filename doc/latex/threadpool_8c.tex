@@ -1,101 +1,43 @@
 \hypertarget{threadpool_8c}{}\section{threadpool.\+c File Reference}
 \label{threadpool_8c}\index{threadpool.\+c@{threadpool.\+c}}
-{\ttfamily \#include $<$pthread.\+h$>$}\\*
-{\ttfamily \#include $<$threadpool.\+h$>$}\\*
-{\ttfamily \#include $<$linkedlist.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}threadpool.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$stddef.\+h$>$}\\*
 {\ttfamily \#include $<$stdlib.\+h$>$}\\*
 {\ttfamily \#include $<$stdio.\+h$>$}\\*
 {\ttfamily \#include $<$assert.\+h$>$}\\*
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-pool\+\_\+t $\ast$ \hyperlink{threadpool_8c_ac35332a635bbfb07ef7f9cfba8fbe1a0}{init\+\_\+pool} (int max\+\_\+size)
-\begin{DoxyCompactList}\small\item\em init\+\_\+pool Allocates and intializes the thread pool \end{DoxyCompactList}\item 
-void \hyperlink{threadpool_8c_a3d7f9612d9800d35dbef829644c5219e}{free\+\_\+pool} (pool\+\_\+t $\ast$\hyperlink{structpool}{pool})
-\begin{DoxyCompactList}\small\item\em free\+\_\+pool Frees the pool and its resources \end{DoxyCompactList}\item 
-void \hyperlink{threadpool_8c_ab3d73f1455205513fe569069ba3bfd8a}{add\+\_\+to\+\_\+pool} (pool\+\_\+t $\ast$\hyperlink{structpool}{pool}, void $\ast$($\ast$server\+\_\+routine)(void $\ast$), void $\ast$($\ast$start\+\_\+routine)(void $\ast$), void $\ast$args)
-\begin{DoxyCompactList}\small\item\em add\+\_\+to\+\_\+pool Adds a connection to be processed in the pool \end{DoxyCompactList}\item 
-void \hyperlink{threadpool_8c_a634e82a47d2e67ec204d512990670c66}{remove\+\_\+from\+\_\+pool} (pool\+\_\+t $\ast$\hyperlink{structpool}{pool}, pthread\+\_\+t $\ast$thread)
-\begin{DoxyCompactList}\small\item\em remove\+\_\+from\+\_\+pool Removes a task from the pool \end{DoxyCompactList}\end{DoxyCompactItemize}
+void \hyperlink{threadpool_8c_a80df1320374038becf8bb2d577f0c09a}{insert\+\_\+job\+\_\+head} (struct \hyperlink{structjob__list}{job\+\_\+list} $\ast$\hyperlink{structjob__list}{job\+\_\+list}, struct \hyperlink{structjob}{job} $\ast$\hyperlink{structjob}{job})
+\item 
+void \hyperlink{threadpool_8c_a45b6997de3c65b4f8c54c96f306a2a66}{insert\+\_\+job\+\_\+tail} (struct \hyperlink{structjob__list}{job\+\_\+list} $\ast$\hyperlink{structjob__list}{job\+\_\+list}, struct \hyperlink{structjob}{job} $\ast$\hyperlink{structjob}{job})
+\item 
+void \hyperlink{threadpool_8c_a428b2af719781cc69a37ce43fa80c613}{remove\+\_\+job} (struct \hyperlink{structjob__list}{job\+\_\+list} $\ast$\hyperlink{structjob__list}{job\+\_\+list}, struct \hyperlink{structjob}{job} $\ast$\hyperlink{structjob}{job})
+\end{DoxyCompactItemize}
 
 
 \subsection{Function Documentation}
-\hypertarget{threadpool_8c_ab3d73f1455205513fe569069ba3bfd8a}{}\index{threadpool.\+c@{threadpool.\+c}!add\+\_\+to\+\_\+pool@{add\+\_\+to\+\_\+pool}}
-\index{add\+\_\+to\+\_\+pool@{add\+\_\+to\+\_\+pool}!threadpool.\+c@{threadpool.\+c}}
-\subsubsection[{add\+\_\+to\+\_\+pool}]{\setlength{\rightskip}{0pt plus 5cm}void add\+\_\+to\+\_\+pool (
+\hypertarget{threadpool_8c_a80df1320374038becf8bb2d577f0c09a}{}\index{threadpool.\+c@{threadpool.\+c}!insert\+\_\+job\+\_\+head@{insert\+\_\+job\+\_\+head}}
+\index{insert\+\_\+job\+\_\+head@{insert\+\_\+job\+\_\+head}!threadpool.\+c@{threadpool.\+c}}
+\subsubsection[{insert\+\_\+job\+\_\+head}]{\setlength{\rightskip}{0pt plus 5cm}void insert\+\_\+job\+\_\+head (
 \begin{DoxyParamCaption}
-\item[{pool\+\_\+t $\ast$}]{pool, }
-\item[{void $\ast$($\ast$)(void $\ast$)}]{server\+\_\+routine, }
-\item[{void $\ast$($\ast$)(void $\ast$)}]{start\+\_\+routine, }
-\item[{void $\ast$}]{args}
+\item[{struct {\bf job\+\_\+list} $\ast$}]{job\+\_\+list, }
+\item[{struct {\bf job} $\ast$}]{job}
 \end{DoxyParamCaption}
-)}\label{threadpool_8c_ab3d73f1455205513fe569069ba3bfd8a}
-
-
-add\+\_\+to\+\_\+pool Adds a connection to be processed in the pool 
-
-
-\begin{DoxyParams}{Parameters}
-{\em pool} & The thread pool \\
-\hline
-{\em server\+\_\+routine} & The function pointer to the server routine \\
-\hline
-{\em start\+\_\+routine} & The function pointer to the thread routine \\
-\hline
-{\em args} & The args for the server routine \\
-\hline
-\end{DoxyParams}
-\hypertarget{threadpool_8c_a3d7f9612d9800d35dbef829644c5219e}{}\index{threadpool.\+c@{threadpool.\+c}!free\+\_\+pool@{free\+\_\+pool}}
-\index{free\+\_\+pool@{free\+\_\+pool}!threadpool.\+c@{threadpool.\+c}}
-\subsubsection[{free\+\_\+pool}]{\setlength{\rightskip}{0pt plus 5cm}void free\+\_\+pool (
+)}\label{threadpool_8c_a80df1320374038becf8bb2d577f0c09a}
+\hypertarget{threadpool_8c_a45b6997de3c65b4f8c54c96f306a2a66}{}\index{threadpool.\+c@{threadpool.\+c}!insert\+\_\+job\+\_\+tail@{insert\+\_\+job\+\_\+tail}}
+\index{insert\+\_\+job\+\_\+tail@{insert\+\_\+job\+\_\+tail}!threadpool.\+c@{threadpool.\+c}}
+\subsubsection[{insert\+\_\+job\+\_\+tail}]{\setlength{\rightskip}{0pt plus 5cm}void insert\+\_\+job\+\_\+tail (
 \begin{DoxyParamCaption}
-\item[{pool\+\_\+t $\ast$}]{pool}
+\item[{struct {\bf job\+\_\+list} $\ast$}]{job\+\_\+list, }
+\item[{struct {\bf job} $\ast$}]{job}
 \end{DoxyParamCaption}
-)}\label{threadpool_8c_a3d7f9612d9800d35dbef829644c5219e}
-
-
-free\+\_\+pool Frees the pool and its resources 
-
-
-\begin{DoxyParams}{Parameters}
-{\em pool} & The thread pool to be freed \\
-\hline
-\end{DoxyParams}
-\hypertarget{threadpool_8c_ac35332a635bbfb07ef7f9cfba8fbe1a0}{}\index{threadpool.\+c@{threadpool.\+c}!init\+\_\+pool@{init\+\_\+pool}}
-\index{init\+\_\+pool@{init\+\_\+pool}!threadpool.\+c@{threadpool.\+c}}
-\subsubsection[{init\+\_\+pool}]{\setlength{\rightskip}{0pt plus 5cm}pool\+\_\+t$\ast$ init\+\_\+pool (
+)}\label{threadpool_8c_a45b6997de3c65b4f8c54c96f306a2a66}
+\hypertarget{threadpool_8c_a428b2af719781cc69a37ce43fa80c613}{}\index{threadpool.\+c@{threadpool.\+c}!remove\+\_\+job@{remove\+\_\+job}}
+\index{remove\+\_\+job@{remove\+\_\+job}!threadpool.\+c@{threadpool.\+c}}
+\subsubsection[{remove\+\_\+job}]{\setlength{\rightskip}{0pt plus 5cm}void remove\+\_\+job (
 \begin{DoxyParamCaption}
-\item[{int}]{max\+\_\+size}
+\item[{struct {\bf job\+\_\+list} $\ast$}]{job\+\_\+list, }
+\item[{struct {\bf job} $\ast$}]{job}
 \end{DoxyParamCaption}
-)}\label{threadpool_8c_ac35332a635bbfb07ef7f9cfba8fbe1a0}
-
-
-init\+\_\+pool Allocates and intializes the thread pool 
-
-
-\begin{DoxyParams}{Parameters}
-{\em max\+\_\+size} & The max size of the pool \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-An initialized thread pool 
-\end{DoxyReturn}
-\hypertarget{threadpool_8c_a634e82a47d2e67ec204d512990670c66}{}\index{threadpool.\+c@{threadpool.\+c}!remove\+\_\+from\+\_\+pool@{remove\+\_\+from\+\_\+pool}}
-\index{remove\+\_\+from\+\_\+pool@{remove\+\_\+from\+\_\+pool}!threadpool.\+c@{threadpool.\+c}}
-\subsubsection[{remove\+\_\+from\+\_\+pool}]{\setlength{\rightskip}{0pt plus 5cm}void remove\+\_\+from\+\_\+pool (
-\begin{DoxyParamCaption}
-\item[{pool\+\_\+t $\ast$}]{pool, }
-\item[{pthread\+\_\+t $\ast$}]{thread}
-\end{DoxyParamCaption}
-)}\label{threadpool_8c_a634e82a47d2e67ec204d512990670c66}
-
-
-remove\+\_\+from\+\_\+pool Removes a task from the pool 
-
-
-\begin{DoxyParams}{Parameters}
-{\em pool} & The pool \\
-\hline
-{\em thread} & The task as represented by the thread id \\
-\hline
-\end{DoxyParams}
+)}\label{threadpool_8c_a428b2af719781cc69a37ce43fa80c613}

@@ -1,7 +1,6 @@
 var searchData=
 [
-  ['count_5fcv',['count_cv',['../structpool.html#aa0f704f15aebe84d4264ef85c8074fc9',1,'pool']]],
-  ['count_5fmutex',['count_mutex',['../structpool.html#ae5d29237dc5f83accc03d65f825b127f',1,'pool']]],
-  ['curr_5fthread',['curr_thread',['../structpool__arg.html#a230d8331054ccd6631517549206bd5c5',1,'pool_arg']]],
-  ['current_5fsize',['current_size',['../structpool.html#a9f7a2e94e1205655dfc8c6bf60862501',1,'pool']]]
+  ['completed_5fjobs',['completed_jobs',['../structjob__list.html#a9d8c0692782b162d6e2175ac14331731',1,'job_list']]],
+  ['cond',['cond',['../structjob__list.html#a8af8328ba62f96585dcf491746f3a701',1,'job_list']]],
+  ['current_5fjobs',['current_jobs',['../structjob__list.html#ad0528e452b8b72291e35be8138f93f88',1,'job_list']]]
 ];

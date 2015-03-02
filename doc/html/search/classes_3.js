@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['pool',['pool',['../structpool.html',1,'']]],
-  ['pool_5farg',['pool_arg',['../structpool__arg.html',1,'']]]
+  ['thread_5flist',['thread_list',['../structthread__list.html',1,'']]],
+  ['thread_5fnode',['thread_node',['../structthread__node.html',1,'']]]
 ];

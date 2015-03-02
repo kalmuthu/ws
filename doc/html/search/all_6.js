@@ -1,5 +1,7 @@
 var searchData=
 [
-  ['init_5flist',['init_list',['../linkedlist_8c.html#aaef9a99b5b1394776988deec781291ae',1,'init_list(list_t *list):&#160;linkedlist.c'],['../linkedlist_8h.html#aaef9a99b5b1394776988deec781291ae',1,'init_list(list_t *list):&#160;linkedlist.c']]],
-  ['init_5fpool',['init_pool',['../threadpool_8c.html#ac35332a635bbfb07ef7f9cfba8fbe1a0',1,'init_pool(int max_size):&#160;threadpool.c'],['../threadpool_8h.html#ac35332a635bbfb07ef7f9cfba8fbe1a0',1,'init_pool(int max_size):&#160;threadpool.c']]]
+  ['insert_5fjob_5fhead',['insert_job_head',['../threadpool_8c.html#a80df1320374038becf8bb2d577f0c09a',1,'insert_job_head(struct job_list *job_list, struct job *job):&#160;threadpool.c'],['../threadpool_8h.html#a0579e03d7152829e6f01d521343bf0a5',1,'insert_job_head(struct job_list *, struct job *):&#160;threadpool.c']]],
+  ['insert_5fjob_5ftail',['insert_job_tail',['../threadpool_8c.html#a45b6997de3c65b4f8c54c96f306a2a66',1,'insert_job_tail(struct job_list *job_list, struct job *job):&#160;threadpool.c'],['../threadpool_8h.html#a0211bdba5417240684a0b3c156b761eb',1,'insert_job_tail(struct job_list *, struct job *):&#160;threadpool.c']]],
+  ['insert_5fthread_5flist_5fhead',['insert_thread_list_head',['../threadlist_8c.html#a3cfb1cc616ba4034977d9435093ff764',1,'insert_thread_list_head(struct thread_node *thread_node, struct thread_list *thread_list):&#160;threadlist.c'],['../threadlist_8h.html#ae7bc6e3b4d9681ba27d5661823cc8aaf',1,'insert_thread_list_head(struct thread_node *, struct thread_list *):&#160;threadlist.c']]],
+  ['insert_5fthread_5flist_5ftail',['insert_thread_list_tail',['../threadlist_8c.html#aa20574af49d03c6fed6b3c9a76eb5438',1,'insert_thread_list_tail(struct thread_node *thread_node, struct thread_list *thread_list):&#160;threadlist.c'],['../threadlist_8h.html#a7c131df4c23a2233db1a23813fc5934e',1,'insert_thread_list_tail(struct thread_node *, struct thread_list *):&#160;threadlist.c']]]
 ];

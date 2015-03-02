@@ -1,6 +1,11 @@
 #import "threadlist.h"
 #include <stddef.h>
 
+/**
+ * @brief Inserts the node to the head of the list
+ * @param thread_node The node to be inserted
+ * @param thread_list The list of threads
+ */
 void insert_thread_list_head(struct thread_node * thread_node, struct thread_list * thread_list){
     if(thread_list->head){
         //thread_node will be new head
@@ -18,6 +23,11 @@ void insert_thread_list_head(struct thread_node * thread_node, struct thread_lis
     }
 }
 
+/**
+ * @brief Inserts the given node to the end of the list
+ * @param thread_node The node to be inserted
+ * @param thread_list The list of threads
+ */
 void insert_thread_list_tail(struct thread_node * thread_node, struct thread_list * thread_list){
     if(thread_list->tail){
         //thread_node will be new tail

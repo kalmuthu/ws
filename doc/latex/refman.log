@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  25 JAN 2015 12:16
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  2 MAR 2015 00:03
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1110,8 +1110,13 @@ LaTeX Font Info:    Font shape `TS1/phv/m/n' will be
 LaTeX Font Info:    Font shape `T1/phv/bc/n' will be
 (Font)              scaled to size 8.99994pt on input line 36.
  [5])
-(./structlist.tex) (./structnode.tex [6]) (./structpool__arg.tex)
-(./structpool.tex [7]) [8]
+(./structjob.tex
+LaTeX Font Info:    Font shape `T1/phv/m/it' in size <9> not available
+(Font)              Font shape `T1/phv/m/sl' tried instead on input line 16.
+LaTeX Font Info:    Font shape `T1/phv/m/sl' will be
+(Font)              scaled to size 8.09995pt on input line 16.
+ [6]) (./structjob__list.tex [7]) (./structpool__args.tex)
+(./structthread__list.tex [8]) (./structthread__node.tex [9]) [10]
 Chapter 4.
 (./cas_8h.tex) (./content_8c.tex
 Underfull \hbox (badness 10000) in paragraph at lines 3--10
@@ -1126,82 +1131,14 @@ LaTeX Font Info:    Font shape `T1/phv/bc/it' in size <7> not available
 (Font)              Font shape `T1/phv/bc/sl' tried instead on input line 42.
 LaTeX Font Info:    Font shape `T1/phv/bc/sl' will be
 (Font)              scaled to size 6.29996pt on input line 42.
-[9
+[11
 
-]) (./content_8h.tex) (./linkedlist_8c.tex
-Underfull \hbox (badness 10000) in paragraph at lines 3--7
-
- []
-
-LaTeX Font Info:    Font shape `T1/phv/m/it' in size <9> not available
-(Font)              Font shape `T1/phv/m/sl' tried instead on input line 11.
-LaTeX Font Info:    Font shape `T1/phv/m/sl' will be
-(Font)              scaled to size 8.09995pt on input line 11.
-LaTeX Font Info:    Font shape `T1/phv/m/it' in size <7> not available
-(Font)              Font shape `T1/phv/m/sl' tried instead on input line 11.
-LaTeX Font Info:    Font shape `T1/phv/m/sl' will be
-(Font)              scaled to size 6.29996pt on input line 11.
-[10]
-LaTeX Font Info:    Font shape `T1/phv/m/it' in size <10> not available
-(Font)              Font shape `T1/phv/m/sl' tried instead on input line 44.
-LaTeX Font Info:    Font shape `T1/phv/m/sl' will be
-(Font)              scaled to size 8.99994pt on input line 44.
-
-Underfull \hbox (badness 10000) detected at line 47
-[][][]
- []
-
-
-Underfull \hbox (badness 10000) detected at line 82
-[][][]
- []
-
-
-Underfull \hbox (badness 10000) detected at line 101
-[][][]
- []
-
-[11] [12]
-Underfull \hbox (badness 10000) detected at line 120
-[][][]
- []
-
-
-Underfull \hbox (badness 10000) detected at line 199
-[][][]
- []
-
-) (./linkedlist_8h.tex [13]
-Underfull \hbox (badness 10000) detected at line 50
-[][][]
- []
-
-[14]
-Underfull \hbox (badness 10000) detected at line 85
-[][][]
- []
-
-
-Underfull \hbox (badness 10000) detected at line 104
-[][][]
- []
-
-
-Underfull \hbox (badness 10000) detected at line 123
-[][][]
- []
-
-[15]
-Underfull \hbox (badness 10000) detected at line 202
-[][][]
- []
-
-) (./main_8c.tex
+]) (./content_8h.tex) (./main_8c.tex
 Underfull \hbox (badness 10000) in paragraph at lines 3--14
 
  []
 
-[16]
+[12]
 Underfull \hbox (badness 10000) detected at line 63
 [][][]
  []
@@ -1223,58 +1160,71 @@ Underfull \hbox (badness 10000) in paragraph at lines 3--12
 
  []
 
-[17]) (./server_8h.tex) (./simple__http_8c.tex
+[13]) (./server_8h.tex) (./simple__http_8c.tex
 Underfull \hbox (badness 10000) in paragraph at lines 3--9
 
  []
 
-[18]) (./simple__http_8h.tex [19]) (./thread__per__request_8c.tex
-Underfull \hbox (badness 10000) in paragraph at lines 3--11
+[14]) (./simple__http_8h.tex) (./thread__per__request_8c.tex [15]
+Underfull \hbox (badness 10000) in paragraph at lines 3--12
 
  []
 
+LaTeX Font Info:    Font shape `T1/phv/m/it' in size <7> not available
+(Font)              Font shape `T1/phv/m/sl' tried instead on input line 16.
+LaTeX Font Info:    Font shape `T1/phv/m/sl' will be
+(Font)              scaled to size 6.29996pt on input line 16.
 LaTeX Font Info:    Font shape `TS1/phv/m/it' in size <9> not available
-(Font)              Font shape `TS1/phv/m/sl' tried instead on input line 15.
+(Font)              Font shape `TS1/phv/m/sl' tried instead on input line 16.
 LaTeX Font Info:    Font shape `TS1/phv/m/sl' will be
-(Font)              scaled to size 8.09995pt on input line 15.
-[20]
-Underfull \hbox (badness 10000) detected at line 56
+(Font)              scaled to size 8.09995pt on input line 16.
+LaTeX Font Info:    Font shape `T1/phv/m/it' in size <10> not available
+(Font)              Font shape `T1/phv/m/sl' tried instead on input line 36.
+LaTeX Font Info:    Font shape `T1/phv/m/sl' will be
+(Font)              scaled to size 8.99994pt on input line 36.
+
+Underfull \hbox (badness 10000) detected at line 57
 [][][]
  []
 
-) (./thread__per__request_8h.tex) (./thread__pool__request_8c.tex
-Underfull \hbox (badness 10000) in paragraph at lines 3--9
+) (./thread__per__request_8h.tex [16]) (./thread__pool__request_8c.tex
+Underfull \hbox (badness 10000) in paragraph at lines 3--12
 
  []
 
-[21] [22]
-Underfull \hbox (badness 10000) detected at line 56
+[17]
+Underfull \hbox (badness 10000) detected at line 40
 [][][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 75
+Underfull \hbox (badness 10000) detected at line 78
 [][][]
  []
 
-) (./thread__pool__request_8h.tex) (./threadpool_8c.tex
-Underfull \hbox (badness 10000) in paragraph at lines 3--9
 
- []
-
-[23] [24]
-Underfull \hbox (badness 10000) detected at line 80
+Underfull \hbox (badness 10000) detected at line 81
 [][][]
  []
 
-) (./threadpool_8h.tex
+) (./thread__pool__request_8h.tex [18]) (./threadlist_8c.tex
 Underfull \hbox (badness 10000) in paragraph at lines 3--5
 
  []
 
-[25]
-Underfull \hbox (badness 10000) detected at line 83
-[][][]
+) (./threadlist_8h.tex
+Underfull \hbox (badness 10000) in paragraph at lines 3--4
+
+ []
+
+[19]) (./threadpool_8c.tex
+Underfull \hbox (badness 10000) in paragraph at lines 3--8
+
+ []
+
+[20]) (./threadpool_8h.tex
+Underfull \hbox (badness 10000) in paragraph at lines 3--4
+
  []
 
 ) (./util_8c.tex
@@ -1282,29 +1232,32 @@ Underfull \hbox (badness 10000) in paragraph at lines 3--10
 
  []
 
-[26]) (./util_8h.tex) [27] [28
+[21]) (./util_8h.tex [22]) [23] [24
 
-] (./refman.ind [29
+] (./refman.ind [25
 
 
-] [30] [31])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 180.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 180.
- (./refman.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 180.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 180.
+] [26] [27
+
+])
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 181.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 181.
+
+(./refman.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 181.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 181.
 Package rerunfilecheck Info: File `refman.out' has not changed.
-(rerunfilecheck)             Checksum: 931D8A8EE78782F23BDE21651A8BA09C;28213.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 180.
+(rerunfilecheck)             Checksum: 9A5A1E470927A64D8168885DA4F7DCBA;27502.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 181.
  ) 
 Here is how much of TeX's memory you used:
- 13617 strings out of 493117
- 196570 string characters out of 6135433
- 294148 words of memory out of 5000000
- 16483 multiletter control sequences out of 15000+600000
+ 13562 strings out of 493117
+ 195284 string characters out of 6135433
+ 294675 words of memory out of 5000000
+ 16445 multiletter control sequences out of 15000+600000
  69336 words of font info for 72 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 48i,16n,43p,1839b,520s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 48i,16n,43p,1839b,508s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2014/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
 exlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/te
 xlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texl
@@ -1317,10 +1270,10 @@ s/type1/urw/helvetic/uhvbo8a.pfb></usr/local/texlive/2014/texmf-dist/fonts/type
 1/urw/helvetic/uhvbo8ac.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/urw
 /helvetic/uhvr8a.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/urw/helvet
 ic/uhvro8a.pfb>
-Output written on refman.pdf (39 pages, 177108 bytes).
+Output written on refman.pdf (35 pages, 169414 bytes).
 PDF statistics:
- 1550 PDF objects out of 1728 (max. 8388607)
- 1483 compressed objects within 15 object streams
- 321 named destinations out of 1000 (max. 500000)
- 1177 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1498 PDF objects out of 1728 (max. 8388607)
+ 1435 compressed objects within 15 object streams
+ 302 named destinations out of 1000 (max. 500000)
+ 1121 words of extra memory for PDF output out of 10000 (max. 10000000)
 

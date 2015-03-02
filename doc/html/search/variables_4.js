@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['list',['list',['../structpool.html#a95cbd0e4b46a4ae78a62db9f7f4ef3a9',1,'pool']]]
+  ['jobs',['jobs',['../structpool__args.html#af8e75c36acb1af36386ace056d050cdf',1,'pool_args']]]
 ];

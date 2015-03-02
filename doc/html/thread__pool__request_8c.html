@@ -90,25 +90,53 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &lt;stdlib.h&gt;</code><br />
-<code>#include &lt;<a class="el" href="threadpool_8h_source.html">threadpool.h</a>&gt;</code><br />
+<code>#include &quot;<a class="el" href="threadlist_8h_source.html">threadlist.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="threadpool_8h_source.html">threadpool.h</a>&quot;</code><br />
 <code>#include &lt;<a class="el" href="server_8h_source.html">server.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="util_8h_source.html">util.h</a>&gt;</code><br />
 <code>#include &lt;stdio.h&gt;</code><br />
 <code>#include &lt;assert.h&gt;</code><br />
+<code>#include &lt;unistd.h&gt;</code><br />
+<code>#include &lt;stddef.h&gt;</code><br />
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ae075b9f25ee51b47002326796df6c519"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="thread__pool__request_8c.html#ae075b9f25ee51b47002326796df6c519">thread_process_in_pool</a> (void *args)</td></tr>
-<tr class="memdesc:ae075b9f25ee51b47002326796df6c519"><td class="mdescLeft">&#160;</td><td class="mdescRight">thread_process_in_pool Thread function; services the client request  <a href="#ae075b9f25ee51b47002326796df6c519">More...</a><br /></td></tr>
-<tr class="separator:ae075b9f25ee51b47002326796df6c519"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9098524dc72c53071a934dc8db68c53a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="thread__pool__request_8c.html#a9098524dc72c53071a934dc8db68c53a">server_process</a> (void *args)</td></tr>
-<tr class="memdesc:a9098524dc72c53071a934dc8db68c53a"><td class="mdescLeft">&#160;</td><td class="mdescRight">server_process The server function pointer; accepts the request  <a href="#a9098524dc72c53071a934dc8db68c53a">More...</a><br /></td></tr>
-<tr class="separator:a9098524dc72c53071a934dc8db68c53a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a106d5c18d3c0eacbdc246211bb179760"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="thread__pool__request_8c.html#a106d5c18d3c0eacbdc246211bb179760">start_job</a> (void *args)</td></tr>
+<tr class="memdesc:a106d5c18d3c0eacbdc246211bb179760"><td class="mdescLeft">&#160;</td><td class="mdescRight">The function that each worker job performs.  <a href="#a106d5c18d3c0eacbdc246211bb179760">More...</a><br /></td></tr>
+<tr class="separator:a106d5c18d3c0eacbdc246211bb179760"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af54dfe157a12bebc85a354f05352e713"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="thread__pool__request_8c.html#af54dfe157a12bebc85a354f05352e713">pool_thread_process</a> (void *fd)</td></tr>
+<tr class="memdesc:af54dfe157a12bebc85a354f05352e713"><td class="mdescLeft">&#160;</td><td class="mdescRight">thread_process Function to execute on the threads; services the client's request  <a href="#af54dfe157a12bebc85a354f05352e713">More...</a><br /></td></tr>
+<tr class="separator:af54dfe157a12bebc85a354f05352e713"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abac315bd81675cb377bb5546b1b336d8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="thread__pool__request_8c.html#abac315bd81675cb377bb5546b1b336d8">process_request_thread_pool</a> (int max_size, int accept_fd)</td></tr>
 <tr class="memdesc:abac315bd81675cb377bb5546b1b336d8"><td class="mdescLeft">&#160;</td><td class="mdescRight">process_request_thread_pool Creates and runs a thread pool  <a href="#abac315bd81675cb377bb5546b1b336d8">More...</a><br /></td></tr>
 <tr class="separator:abac315bd81675cb377bb5546b1b336d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
+<a class="anchor" id="af54dfe157a12bebc85a354f05352e713"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void* pool_thread_process </td>
+          <td>(</td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>fd</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>thread_process Function to execute on the threads; services the client's request </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">fd</td><td>The file descriptor of the opened request </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>0 </dd></dl>
+
+</div>
+</div>
 <a class="anchor" id="abac315bd81675cb377bb5546b1b336d8"></a>
 <div class="memitem">
 <div class="memproto">
@@ -144,12 +172,12 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a9098524dc72c53071a934dc8db68c53a"></a>
+<a class="anchor" id="a106d5c18d3c0eacbdc246211bb179760"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int server_process </td>
+          <td class="memname">void* start_job </td>
           <td>(</td>
           <td class="paramtype">void *&#160;</td>
           <td class="paramname"><em>args</em></td><td>)</td>
@@ -158,46 +186,22 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>server_process The server function pointer; accepts the request </p>
+<p>The function that each worker job performs. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">args</td><td>The file descriptor of the port being listened </td></tr>
+    <tr><td class="paramname">args</td><td>The arguments for the pool </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>A new file descriptor for the accepted connection </dd></dl>
-
-</div>
-</div>
-<a class="anchor" id="ae075b9f25ee51b47002326796df6c519"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void* thread_process_in_pool </td>
-          <td>(</td>
-          <td class="paramtype">void *&#160;</td>
-          <td class="paramname"><em>args</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>thread_process_in_pool Thread function; services the client request </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">args</td><td>The pool_args </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>0 </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="structpool__args.html" title="The arguments to the pool. ">pool_args</a> </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>0 if no errors </dd></dl>
 
 </div>
 </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Jan 25 2015 12:15:57 for ws by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Mar 2 2015 00:03:33 for ws by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.9.1
 </small></address>
