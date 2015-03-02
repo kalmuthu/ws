@@ -45,6 +45,11 @@ void insert_thread_list_tail(struct thread_node * thread_node, struct thread_lis
     }
 }
 
+/**
+ * @brief Removes the node from the list
+ * @param thread_node The node to be remvoed
+ * @param thread_list The list of threads
+ */
 void remove_from_thread_list(struct thread_node * thread_node, struct thread_list * thread_list){
     //detach
     if(thread_node->next){

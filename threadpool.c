@@ -5,6 +5,11 @@
 #include <stdio.h>
 #include <assert.h>
 
+/**
+ * @brief Inserts the job at the head of the list
+ * @param job_list The list of jobs
+ * @param job The job to be inserted
+ */
 void insert_job_head(struct job_list * job_list, struct job * job){
     if(job_list->head){
         //job will be new head
@@ -22,6 +27,11 @@ void insert_job_head(struct job_list * job_list, struct job * job){
     }
 }
 
+/**
+ * @brief Inserts the job to the tail of the list
+ * @param job_list The list of jobs
+ * @param job The job to be inserted
+ */
 void insert_job_tail(struct job_list * job_list, struct job * job){
     if(job_list->tail){
         //job will be new tail
@@ -39,6 +49,11 @@ void insert_job_tail(struct job_list * job_list, struct job * job){
     }
 }
 
+/**
+ * @brief Removes the given job from the list
+ * @param job_list The list of jobs
+ * @param job The job to be removed
+ */
 void remove_job(struct job_list * job_list, struct job * job){
     //detach
     if(job->next){
